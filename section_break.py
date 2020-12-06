@@ -1,5 +1,5 @@
 import panflute as pf
-
+top_level = 2
 index_str = "目录"
 
 
@@ -8,10 +8,13 @@ def toc(title=index_str):
         pf.Div(pf.Para(pf.Str(title)),
                attributes={"custom-style": "TOC Heading"}),
         pf.RawBlock(r"""<w:p><w:r>
-            <w:fldChar w:fldCharType="begin"/>
-            <w:instrText >TOC \o "1-3" \h \z \u</w:instrText>
-            <w:fldChar w:fldCharType="end"/>
-            </w:r></w:p>""",
+        <w:fldChar w:fldCharType="begin"/>
+        <w:instrText >TOC \o "1-3" \h \z \u</w:instrText>
+        <w:r>
+        <w:fldChar w:fldCharType="separate"/>
+        </w:r>
+        <w:fldChar w:fldCharType="end"/>
+        </w:r></w:p>""",
                     format="openxml")
     ]
 
@@ -32,7 +35,7 @@ class AutoSectionBreak():
         self.after_section_begined = False
 
     def action(self, elem, doc):
-        if isinstance(elem, pf.Header) and elem.level == 2:
+        if isinstance(elem, pf.Header) and elem.level == top_level:
             if 'chinese-abstract' in elem.classes:
                 pass
             elif 'english-abstract' in elem.classes:
@@ -43,12 +46,12 @@ class AutoSectionBreak():
             elif not self.section_begined:
                 self.section_begined = True
                 elem = [
-                    newSection(fmt="upperRoman"), *toc(),
+                    newSection(fmt="upperRoman"),
+                    pf.Div(*toc(), identifier='index'),
                     newSection(fmt="upperRoman"), elem
                 ]
             else:
                 if not self.after_section_begined:
-                    pf.debug('111!')
                     elem = [newSection(fmt="decimal", start="1"), elem]
                     self.after_section_begined = True
                 else:
