@@ -34,21 +34,39 @@ def newSection(fmt: str = "", start: str = ""):
         format="openxml")
 
 
+def unnumber_header(elem):
+    return pf.Div(
+        pf.Para(*elem.content),
+        attributes={"custom-style": f"Unnumbered Header {elem.level}"})
+
+
 class AutoSectionBreak():
     def __init__(self):
         self.section_begined = False
-        self.refs_begined = False
         self.after_section_begined = False
+        self.appendix = False
 
     def action(self, elem, doc):
+        if self.appendix and isinstance(elem,
+                                        pf.Header) and elem.level > top_level:
+            elem = pf.Div(
+                pf.Para(*elem.content),
+                attributes={"custom-style": f"Appendix Header {elem.level}"})
+
         if isinstance(elem, pf.Header) and elem.level == top_level:
             if 'chinese-abstract' in elem.classes:
-                pass
+                elem = unnumber_header(elem)
             elif 'english-abstract' in elem.classes:
-                elem = [newSection(fmt="upperRoman", start="1"), elem]
-            elif 'refs' in elem.classes:
-                self.refs_begined = True
-                elem = [newSection(fmt="decimal"), elem]
+                elem = [
+                    newSection(fmt="upperRoman", start="1"),
+                    unnumber_header(elem)
+                ]
+            elif 'refs' in elem.classes or 'thinks' in elem.classes:
+                self.section_begined = False
+                elem = [newSection(fmt="decimal"), unnumber_header(elem)]
+            elif 'appendix' in elem.classes:
+                self.appendix = True
+                elem = [newSection(fmt="decimal"), unnumber_header(elem)]
             elif not self.section_begined:
                 self.section_begined = True
                 elem = [
