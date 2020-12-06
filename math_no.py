@@ -3,9 +3,23 @@ import copy
 
 valign_block = pf.RawBlock('<w:tcPr><w:vAlign w:val="center"/></w:tcPr>',
                            format="openxml")
+section_no = pf.RawInline(r'''<w:r>
+    <w:fldChar w:fldCharType="begin"/>
+    <w:instrText xml:space="preserve">Section \* mergeformat</w:instrText>
+    <w:fldChar w:fldCharType="end"/><
+    /w:r>''',
+                          format="openxml")
+equation_no = pf.RawInline(r'''<w:r>
+    <w:fldChar w:fldCharType="begin"/>
+    <w:instrText xml:space="preserve">Seq equations \s 2</w:instrText>
+    <w:fldChar w:fldCharType="end"/>
+    </w:r>''',
+                           format="openxml")
 
 
 class MathReplace():
+    math_no = 1
+
     def action(self, elem, doc):
         pf.debug('s:', elem)
         if isinstance(elem, pf.Para):
@@ -28,13 +42,19 @@ class MathReplace():
                 if elem_group[0]:
                     rows = []
                     for math_elem in elem_group[1]:
+                        math_caption = [
+                            pf.Str('('), section_no,
+                            pf.Str('.'), equation_no,
+                            pf.Str(')')
+                        ]
                         rows.append(
                             pf.TableRow(
                                 pf.TableCell(),
                                 pf.TableCell(valign_block,
                                              pf.Plain(math_elem)),
                                 pf.TableCell(valign_block,
-                                             pf.Plain(pf.Str('a')))))
+                                             pf.Plain(*math_caption))))
+                        self.math_no += 1
                     elem.append(
                         pf.Table(pf.TableBody(*rows),
                                  colspec=[('AlignLeft', 0.1),
