@@ -34,12 +34,6 @@ def newSection(fmt: str = "", start: str = ""):
         format="openxml")
 
 
-def unnumber_header(elem):
-    return pf.Div(
-        pf.Para(*elem.content),
-        attributes={"custom-style": f"Unnumbered Header {elem.level}"})
-
-
 class AutoSectionBreak():
     def __init__(self):
         self.section_begined = False
@@ -49,24 +43,24 @@ class AutoSectionBreak():
     def action(self, elem, doc):
         if self.appendix and isinstance(elem,
                                         pf.Header) and elem.level > top_level:
-            elem = pf.Div(
-                pf.Para(*elem.content),
-                attributes={"custom-style": f"Appendix Header {elem.level}"})
+            elem.attributes.update(
+                {"custom-style": f"Appendix Header {elem.level}"})
+            elem.classes.append('unmunbered')
 
         if isinstance(elem, pf.Header) and elem.level == top_level:
             if 'chinese-abstract' in elem.classes:
-                elem = unnumber_header(elem)
+                elem.classes.append("unnumbered")
             elif 'english-abstract' in elem.classes:
-                elem = [
-                    newSection(fmt="upperRoman", start="1"),
-                    unnumber_header(elem)
-                ]
+                elem.classes.append("unnumbered")
+                elem = [newSection(fmt="upperRoman", start="1"), elem]
             elif 'refs' in elem.classes or 'thinks' in elem.classes:
                 self.section_begined = False
-                elem = [newSection(fmt="decimal"), unnumber_header(elem)]
+                elem.classes.append("unnumbered")
+                elem = [newSection(fmt="decimal"), elem]
             elif 'appendix' in elem.classes:
                 self.appendix = True
-                elem = [newSection(fmt="decimal"), unnumber_header(elem)]
+                elem.classes.append("unnumbered")
+                elem = [newSection(fmt="decimal"), elem]
             elif not self.section_begined:
                 self.section_begined = True
                 elem = [
