@@ -1,17 +1,25 @@
 import panflute as pf
 import copy
 
-valign_block = pf.RawBlock('<w:tcPr><w:vAlign w:val="center"/></w:tcPr>',
-                           format="openxml")
-section_no = pf.RawInline(r'''<w:r>
+top_level = 2
+equation_width = 0.7
+
+
+def valign_block(width):
+    return pf.RawBlock(
+        f'<w:tcPr><w:vAlign w:val="center"/><w:tcW w:w="{width}" w:type="pct"/></w:tcPr>',
+        format="openxml")
+
+
+section_no = pf.RawInline(f'''<w:r>
     <w:fldChar w:fldCharType="begin"/>
-    <w:instrText xml:space="preserve">Section \* mergeformat</w:instrText>
+    <w:instrText xml:space="preserve">StyleRef {top_level} \\s</w:instrText>
     <w:fldChar w:fldCharType="end"/><
     /w:r>''',
                           format="openxml")
-equation_no = pf.RawInline(r'''<w:r>
+equation_no = pf.RawInline(f'''<w:r>
     <w:fldChar w:fldCharType="begin"/>
-    <w:instrText xml:space="preserve">Seq equations \s 2</w:instrText>
+    <w:instrText xml:space="preserve">Seq equations \\s {top_level}</w:instrText>
     <w:fldChar w:fldCharType="end"/>
     </w:r>''',
                            format="openxml")
@@ -49,17 +57,26 @@ class MathReplace():
                         ]
                         rows.append(
                             pf.TableRow(
-                                pf.TableCell(),
-                                pf.TableCell(valign_block,
-                                             pf.Plain(math_elem)),
-                                pf.TableCell(valign_block,
-                                             pf.Plain(*math_caption))))
+                                pf.TableCell(
+                                    valign_block(50 * (1 - equation_width))),
+                                pf.TableCell(
+                                    valign_block(100 * equation_width),
+                                    pf.Para(math_elem)),
+                                pf.TableCell(
+                                    valign_block(50 * (1 - equation_width)),
+                                    pf.Div(pf.Para(*math_caption),
+                                           attributes={
+                                               'custom-style':
+                                               'Equation Caption'
+                                           }))))
                         self.math_no += 1
                     elem.append(
                         pf.Table(pf.TableBody(*rows),
-                                 colspec=[('AlignLeft', 0.1),
-                                          ('AlignCenter', 0.8),
-                                          ('AlignRight', 0.1)],
+                                 colspec=[
+                                     ('AlignLeft', (1 - equation_width) / 2),
+                                     ('AlignLeft', equation_width),
+                                     ('AlignRight', (1 - equation_width) / 2)
+                                 ],
                                  caption=pf.Caption(pf.Div())))
                 else:
                     elem_new = copy.copy(elem_old)
