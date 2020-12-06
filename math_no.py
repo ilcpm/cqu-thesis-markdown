@@ -1,5 +1,8 @@
 import panflute as pf
 
+valign_block = pf.RawBlock('<w:tcPr><w:vAlign w:val="center"/></w:tcPr>',
+                           format="openxml")
+
 
 class MathReplace():
     def action(self, elem, doc):
@@ -8,10 +11,12 @@ class MathReplace():
             elem1 = elem.content[0]
             if isinstance(elem1, pf.Math) and elem1.format == 'DisplayMath':
                 elem = pf.Table(
-                    head=pf.TableHead(
-                        pf.TableRow(pf.TableCell(pf.Plain(pf.Str(''))),
-                                    pf.TableCell(pf.Plain(elem1)),
-                                    pf.TableCell(pf.Plain(pf.Str('a'))))),
+                    pf.TableBody(
+                        pf.TableRow(
+                            pf.TableCell(valign_block, pf.Plain(pf.Str('a'))),
+                            pf.TableCell(valign_block, pf.Plain(elem1)),
+                            pf.TableCell(valign_block,
+                                         pf.Plain(pf.Str('a'))))),
                     colspec=[('AlignLeft', 0.1), ('AlignCenter', 0.8),
                              ('AlignRight', 0.1)],
                     caption=pf.Caption()
