@@ -1,7 +1,7 @@
 ## 运行
 
 ```
-pandoc example.md  --filter equations_no.py --filter section_break.py -o example.docx
+pandoc example.md  --filter equations_no.py --filter section_break.py --filter header_convert.py -o example.docx
 ```
 
 ## 样式
