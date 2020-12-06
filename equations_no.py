@@ -3,17 +3,9 @@ import copy
 
 valign_block = pf.RawBlock('<w:tcPr><w:vAlign w:val="center"/></w:tcPr>',
                            format="openxml")
-section_no = pf.RawInline(r'''<w:r>
-    <w:fldChar w:fldCharType="begin"/>
-    <w:instrText xml:space="preserve">Section \* mergeformat</w:instrText>
-    <w:fldChar w:fldCharType="end"/><
-    /w:r>''',
+section_no = pf.RawInline(r'''<w:fldSimple w:instr=" STYLEREF 1 \s "/>''',
                           format="openxml")
-equation_no = pf.RawInline(r'''<w:r>
-    <w:fldChar w:fldCharType="begin"/>
-    <w:instrText xml:space="preserve">Seq equations \s 2</w:instrText>
-    <w:fldChar w:fldCharType="end"/>
-    </w:r>''',
+equation_no = pf.RawInline(r'''<w:fldSimple w:instr=" SEQ Figure \* ARABIC \s 1 "/>''',
                            format="openxml")
 
 
