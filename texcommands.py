@@ -29,11 +29,14 @@ const_commands = {
 
 def toc(title=index_str):
     return [
-        pf.Div(pf.Para(pf.Str(index)),
+        pf.Div(pf.Para(pf.Str(title)),
                attributes={"custom-style": "TOC Heading"}),
-        pf.RawBlock(
-            r"""<w:p><w:r><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:instrText>TOC \o "1-3" \h \z \u</w:instrText></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>"""
-        )
+        pf.RawBlock(r"""<w:p><w:r>
+            <w:fldChar w:fldCharType="begin"/>
+            <w:instrText >TOC \o "1-3" \h \z \u</w:instrText>
+            <w:fldChar w:fldCharType="end"/>
+            </w:r></w:p>""",
+                    format="openxml")
     ]
 
 
