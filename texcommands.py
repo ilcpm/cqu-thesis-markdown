@@ -29,7 +29,7 @@ const_commands = {
 
 def toc(title=index_str):
     return [
-        pf.Div(pf.Para(pf.Str(title)),
+        pf.Div(pf.Para(pf.Str(index)),
                attributes={"custom-style": "TOC Heading"}),
         pf.RawBlock(
             r"""<w:p><w:r><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:instrText>TOC \o "1-3" \h \z \u</w:instrText></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>"""
@@ -42,7 +42,7 @@ def newSection(fmt: str = "", start: str = ""):
     startstr = f'w:start="{start}"' if start else ""
     pagestr = f'<w:pgNumType {fmtstr} {startstr}/>' if startstr or fmtstr else ""
     return pf.RawBlock(
-        f"<w:p/><w:p><w:pPr><w:sectPr>{pagestr}</w:sectPr></w:pPr></w:p>",
+        f"<w:p><w:pPr><w:sectPr>{pagestr}</w:sectPr></w:pPr></w:p>",
         format="openxml")
 
 
@@ -51,11 +51,10 @@ class ConstTexCommandReplace():
         pf.debug('s:', elem)
         if isinstance(elem, (pf.RawBlock, pf.RawInline)):
             text = elem.text if elem.text[-2:] != "{}" else elem.text[:-2]
-            #pf.debug(text)
+            text = text.strip()
             if elem.format == 'tex':
                 if text in self.commands:
-                    method = self.commands[text]
-                    elem = method
+                    elem = self.commands[text]
                 else:
                     elem = eval(
                         elem.text.replace("{", "(", 1).replace(
