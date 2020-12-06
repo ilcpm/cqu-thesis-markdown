@@ -12,14 +12,16 @@ def valign_block(width):
 
 
 section_no = pf.RawInline(f'''<w:r>
-    <w:fldChar w:fldCharType="begin"/>
+    <w:fldChar w:fldCharType="begin" w:dirty="true"/>
     <w:instrText xml:space="preserve">StyleRef {top_level} \\s</w:instrText>
+    <w:fldChar w:fldCharType="separate"/>
     <w:fldChar w:fldCharType="end"/><
     /w:r>''',
                           format="openxml")
 equation_no = pf.RawInline(f'''<w:r>
-    <w:fldChar w:fldCharType="begin"/>
+    <w:fldChar w:fldCharType="begin" w:dirty="true"/>
     <w:instrText xml:space="preserve">Seq equations \\s {top_level}</w:instrText>
+    <w:fldChar w:fldCharType="separate"/>
     <w:fldChar w:fldCharType="end"/>
     </w:r>''',
                            format="openxml")
