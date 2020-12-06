@@ -11,9 +11,11 @@ nocite: /
 
 \KeyWord{关键词1，关键词2，关键词3}
 
-# Abstract{-}
+# **Abstract**{-}
 
 English Abstract.
+
+按照排版规定英文标题需要加粗
 
 \KeyWord{Key word 1, key word 2, key word 3}
 
@@ -41,7 +43,7 @@ English Abstract.
 
 ##### H5 Numbered
 
-一条参考文献不够，再来两个一起试试[@Perner-171&, @WeichselbraunGindl-160, @YangGuo-164]，\newLine{}怎么样，牛逼吧？
+一条参考文献不够，再来两个一起试试[@Perner-171; @WeichselbraunGindl-160; @YangGuo-164]，\newLine{}怎么样，牛逼吧？
 
 ###### H6 Numbered
 
@@ -53,6 +55,8 @@ $ \angle ACB=90\degree{} $
 # H1 Unnumbered{-}
 
 脚注也是规定论文的元素之一[^1]，再来一个脚注[^2]
+
+> 测试一下引用
 
 [^1]: 这是脚注1
 [^2]: 这是脚注2
