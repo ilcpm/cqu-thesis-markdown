@@ -7,14 +7,20 @@ def toc(title=index_str):
     return [
         pf.Div(pf.Para(pf.Str(title)),
                attributes={"custom-style": "TOC Heading"}),
-        pf.RawBlock(r"""<w:p><w:r>
-        <w:fldChar w:fldCharType="begin"/>
-        <w:instrText >TOC \o "1-3" \h \z \u</w:instrText>
-        <w:r>
+        pf.RawBlock(r"""<w:sdt>
+        <w:sdtPr>
+        <w:docPartObj>
+        <w:docPartGallery w:val="Table of Contents"/>
+        <w:docPartUnique/>
+        </w:docPartObj>
+        </w:sdtPr>
+        <w:sdtContent>
+        <w:p><w:r>
+        <w:fldChar w:fldCharType="begin" w:dirty="true"/>
+        <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
         <w:fldChar w:fldCharType="separate"/>
-        </w:r>
         <w:fldChar w:fldCharType="end"/>
-        </w:r></w:p>""",
+        </w:r></w:p></w:sdtContent>""",
                     format="openxml")
     ]
 
