@@ -1,6 +1,5 @@
 import panflute as pf
 import typing
-import re
 index_str = "目录"
 
 const_commands = {
@@ -24,15 +23,18 @@ const_commands = {
         '<w:r><w:ptab w:relativeTo="margin" w:alignment="center" w:leader="none"/></w:r>',
         format="openxml"),
     r'\tab':
-    pf.RawInline("<w:r><w:tab/></w:r>", format="openxml"),
-    r'\toc': [
-        pf.Div(pf.Para(pf.Str(index_str)),
+    pf.RawInline("<w:r><w:tab/></w:r>", format="openxml")
+}
+
+
+def toc(title=index_str):
+    return [
+        pf.Div(pf.Para(pf.Str(title)),
                attributes={"custom-style": "TOC Heading"}),
         pf.RawBlock(
             r"""<w:p><w:r><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:instrText>TOC \o "1-3" \h \z \u</w:instrText></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>"""
         )
     ]
-}
 
 
 def newSection(fmt: str = "", start: str = ""):
@@ -45,8 +47,6 @@ def newSection(fmt: str = "", start: str = ""):
 
 
 class ConstTexCommandReplace():
-    RE = re.compile(r'\\[a-zA-Z0-9](\[\]])*(\{\})*')
-
     def action(self, elem, doc):
         pf.debug('s:', elem)
         if isinstance(elem, (pf.RawBlock, pf.RawInline)):
