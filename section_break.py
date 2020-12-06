@@ -1,5 +1,5 @@
 import panflute as pf
-top_level = 2
+top_level = 1
 index_str = "目录"
 
 

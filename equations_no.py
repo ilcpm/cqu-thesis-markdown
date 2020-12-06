@@ -1,7 +1,7 @@
 import panflute as pf
 import copy
 
-top_level = 2
+top_level = 1
 equation_width = 0.7
 
 
