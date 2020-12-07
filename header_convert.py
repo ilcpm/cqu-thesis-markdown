@@ -9,7 +9,7 @@ def headerConvert(elem, doc):
                           classes=elem.classes,
                           attributes=elem.attributes)
         if 'unnumbered' in elem.classes:
-            attributes = ({"custom-style": f"Unnumbered Header {elem.level}"})
+            attributes = ({"custom-style": f"Unnumbered Heading {elem.level}"})
             attributes.update(elem.attributes)
             return pf.Div(pf.Para(*elem.content),
                           identifier=elem.identifier,

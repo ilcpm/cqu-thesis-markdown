@@ -44,10 +44,12 @@ class AutoSectionBreak():
         if self.appendix and isinstance(elem,
                                         pf.Header) and elem.level > top_level:
             elem.attributes.update(
-                {"custom-style": f"Appendix Header {elem.level}"})
-            elem.classes.append('unmunbered')
+                {"custom-style": f"Unnumbered Heading {elem.level}"})
+            elem.classes.append('unnumbered')
 
         if isinstance(elem, pf.Header) and elem.level == top_level:
+            if '-' in elem.classes:
+                elem.classes.append("unnumbered")
             if 'chinese-abstract' in elem.classes:
                 elem.classes.append("unnumbered")
             elif 'english-abstract' in elem.classes:

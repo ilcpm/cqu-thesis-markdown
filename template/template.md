@@ -64,16 +64,16 @@ $ \angle ACB=90\degree{} $
 
 # 参考文献{-}
 
-\Reference{}
+<!-- \Reference{} -->
+::: {#refs}
+:::
 
-# 附录{-, .Appendix}
+# 附录{- .appendix}
 
-## A
+## A{- .appendix}
 
 附录A中的内容
 
-## B
+## B{- .appendix}
 
 附录B中的内容
-
-\newSection{Arabic}
