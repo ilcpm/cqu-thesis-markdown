@@ -17,7 +17,7 @@ English Abstract.
 
 按照排版规定英文标题需要加粗
 
-\KeyWord{Key word 1, key word 2, key word 3}
+\SecondKeyWord{Key word 1, key word 2, key word 3}
 
 \toc{目    录}
 
