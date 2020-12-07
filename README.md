@@ -55,11 +55,27 @@ pandoc example.md  --filter equations_no.py --filter section_break.py --filter h
 
 ## 模版TODO
 
+- 内联代码样式
 - 术语表
 - 表目录图目录
 - 封面
 - 标题编号的制表符与目录的位置微调（更好看）
+- 尾注
+- 脚注的分隔线
 - 四级标题编号的带圈序号（等上面那个调好了再说）
+
+    ```xml
+        <w:lvl w:ilvl="3">
+        <w:start w:val="1"/>
+        <w:numFmt w:val="decimalEnclosedCircleChinese"/>
+        <w:lvlText w:val="%4"/>
+        <w:lvlJc w:val="left"/>
+        <w:pPr>
+            <w:ind w:left="0" w:firstLine="0"/>
+        </w:pPr>
+        </w:lvl>
+    ```
+
 - 本科研究生的区别
   - 目前按照研究生标准处理页眉字号（当本科是打错字了）
   - 按研究生处理目录字体

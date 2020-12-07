@@ -2,6 +2,8 @@ import panflute as pf
 import typing
 index_str = "目录"
 
+pageInfoStr = r'''<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="1134" w:right="1418" w:bottom="1418" w:left="1418" w:header="907" w:footer="851" w:gutter="567"/>'''
+
 const_commands = {
     r'\newLine':
     pf.LineBreak(),
@@ -23,7 +25,34 @@ const_commands = {
         '<w:r><w:ptab w:relativeTo="margin" w:alignment="center" w:leader="none"/></w:r>',
         format="openxml"),
     r'\tab':
-    pf.RawInline("<w:r><w:tab/></w:r>", format="openxml")
+    pf.RawInline("<w:r><w:tab/></w:r>", format="openxml"),
+    r'\newSection{UpperRoman}':
+    pf.RawBlock(
+        r"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="upperRoman" w:start="1"/>"""+ pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
+        format="openxml"),
+    r'\newSection{Arabic}':
+    pf.RawBlock(
+        f"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="decimal" w:start="1"/>"""+ pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
+        format="openxml"),
+    r'\toc{目    录}':[
+        pf.Div(pf.Para(pf.Str("目    录")),
+               attributes={"custom-style": "TOC Heading"}),
+        pf.RawBlock(r"""<w:sdt>
+        <w:sdtPr>
+        <w:docPartObj>
+        <w:docPartGallery w:val="Table of Contents"/>
+        <w:docPartUnique/>
+        </w:docPartObj>
+        </w:sdtPr>
+        <w:sdtContent>
+        <w:p><w:r>
+        <w:fldChar w:fldCharType="begin" w:dirty="true"/>
+        <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
+        <w:fldChar w:fldCharType="separate"/>
+        <w:fldChar w:fldCharType="end"/>
+        </w:r></w:p></w:sdtContent>""",
+                    format="openxml")
+    ]
 }
 
 
@@ -58,10 +87,10 @@ class ConstTexCommandReplace():
             if elem.format == 'tex':
                 if text in self.commands:
                     elem = self.commands[text]
-                else:
-                    elem = eval(
-                        elem.text.replace("{", "(", 1).replace(
-                            '\\', '', 1)[::-1].replace("}", ")", 1)[::-1])
+                # else:
+                #     elem = eval(
+                #         elem.text.replace("{", "(", 1).replace(
+                #             '\\', '', 1)[::-1].replace("}", ")", 1)[::-1])
 
         pf.debug('o:', elem)
         return elem
