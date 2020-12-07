@@ -13,6 +13,7 @@ pandoc example.md  --filter equations_no.py --filter section_break.py --filter h
 - `Unnumbered Heading 2`: 无编号的二级标题
 - `Appendix Text`: 附录正文样式
 - `Plain Text`: 无缩进的普通文本，用做公式编号的样式等
+- `Heading Numbering`：标题的编号列表
 
 ## 命令定义
 
@@ -33,3 +34,20 @@ pandoc example.md  --filter equations_no.py --filter section_break.py --filter h
 - `\Reference{}`：在当前位置插入参考文献，因为排版要求规定`附录`在`参考文献`之后，而pandoc默认参考文献插入在文档最后，所以需要定义命令以在任意位置插入参考文献
 - \`{some code}\`{=field}：`some code`为域代码，`{=field}`表示把该部分内容作为域代码处理，通过该语法可以实现插入自定义域代码的功能
 - `[被标记文本]{#书签名字}`：可以对`被标记文本`标记一个名为`书签名字`的书签，通过书签和域代码配合，可以实现交叉引用。该功能为pandoc自带功能
+
+## 开发日志
+
+- 2020.12.05~2020.12.06：
+  - 总结CQU排版要求{@ilcpm}
+  - python变成实现[@Hagb]
+- 2020.12.07：
+  - 开始模版制作
+  - 遇到pandoc的bug
+    - 触发条件为两端对齐+换行符，会导致第一行变成“分散对齐”的效果
+    - 解决方案为：在settings.xml中添加节点
+
+      ```xml
+      <w:compat>
+        <w:doNotExpandShiftReturn/>
+      </w:compat>
+      ```
