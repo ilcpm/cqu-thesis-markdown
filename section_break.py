@@ -54,7 +54,7 @@ class AutoSectionBreak():
                 elem.classes.append("unnumbered")
                 elem = [newSection(fmt="upperRoman", start="1"), elem]
             elif 'refs' in elem.classes or 'thinks' in elem.classes:
-                self.section_begined = False
+                self.appendix = False
                 elem.classes.append("unnumbered")
                 elem = [newSection(fmt="decimal"), elem]
             elif 'appendix' in elem.classes:
