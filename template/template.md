@@ -94,9 +94,9 @@ for k in List:  # 将list打印输出，五个一换行
 
 正文内容123
 
-![这里需要一个图片](cqu.png)
+### 图片题注和引用的用法
 
-### H3 Numbered
+![这里需要一个图片](cqu.png)
 
 图 [@fig1-no]，其标题为[@fig1-zh]；图[@fig2-no]，其中文标题为[@fig2-zh]，英文标题为[@fig2-en]。
 
@@ -122,7 +122,7 @@ for k in List:  # 将list打印输出，五个一换行
 
 一条参考文献不够，再来两个一起试试[@Perner-171; @WeichselbraunGindl-160; @YangGuo-164]，\newLine{}怎么样，牛逼吧？
 
-###### H6 Numbered
+###### 公式的用法
 
 试试看公式呢。
 
@@ -133,6 +133,10 @@ $$a + b^2 = \frac{c}{d}$$ {#eq1}
 $$\begin{matrix}α & β \\ 3 & 4 \\\end{matrix}$$
 $$\begin{pmatrix}α & β \\ 3 & 4 \\\end{pmatrix}$$
 $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
+
+以下两个公式后有`{#a}`:$$x=y_0$${} {#a} $$x=y_1$$ {} {#a}
+
+就是说，如果要在公式后面输入`{#a}`这样的文字，可以先用空的花括号`{}`隔开
 
 # H1 Unnumbered{-}
 
@@ -152,10 +156,10 @@ $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 
 # 附录{.appendix}
 
-## A
+## A{-}
 
-附录A中的内容
+附录A中的内容`内联代码code code`内联代码测试
 
-## B
+## B{-}
 
 附录B中的内容
