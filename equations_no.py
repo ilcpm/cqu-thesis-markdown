@@ -26,7 +26,7 @@ class MathReplace():
     anchor_re = re.compile(r'{#([^}]+)}')
 
     def action(self, elem, doc):
-        pf.debug('s:', elem)
+        # pf.debug('s:', elem)
         if isinstance(elem, pf.Para):
             rows = []
             content_group = []
@@ -75,7 +75,7 @@ class MathReplace():
                                 else:
                                     tag = ''
                                     notag = True
-                                    pf.debug('notag')
+                                    # pf.debug('notag')
                                 math_elem = math_elem[0]
                             else:
                                 math_elem = math_elem[0]
@@ -120,7 +120,7 @@ class MathReplace():
                     elem_new = copy.copy(elem_old)
                     elem_new.content = elem_group[1]
                     elem.append(elem_new)
-        pf.debug('o:', elem)
+        # pf.debug('o:', elem)
         return elem
 
     def __init__(self):

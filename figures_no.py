@@ -13,13 +13,13 @@ figure_no2 = pf.RawInline(
     format="openxml")
 
 
-class MathReplace():
+class FigCaptionReplace():
     math_no = 1
     anchor_re = re.compile(r'{#([^}]+)}')
 
     def action(self, elem, doc):
         if isinstance(elem, pf.Image):
-            pf.debug("Image!")
+            # pf.debug("Image!")
             elem: pf.Image
             cap2_begin = False
             cap2 = []
@@ -63,7 +63,7 @@ class MathReplace():
 
 
 def main(doc=None):
-    replacer = MathReplace()
+    replacer = FigCaptionReplace()
     return pf.run_filter(replacer.action, doc=doc)
 
 
