@@ -78,12 +78,12 @@ class MathReplace():
                                 notag = False
                                 tag = ''
                         math_caption = [
-                            pf.Str('('),
-                            pf.Span(section_no,
+                            pf.Span(pf.Str('('),section_no,
                                     pf.Str('.'),
                                     equation_no,
-                                    identifier=tag),
-                            pf.Str(')')
+                                    pf.Str(')'),
+                                    identifier=tag
+                            )
                         ] if not notag else []
 
                         rows.append(
@@ -92,7 +92,11 @@ class MathReplace():
                                     valign_block(50 * (1 - equation_width))),
                                 pf.TableCell(
                                     valign_block(100 * equation_width),
-                                    pf.Para(math_elem)),
+                                    pf.Div(pf.Para(math_elem),
+                                           attributes={
+                                               'custom-style':
+                                               'Equation'
+                                           })),
                                 pf.TableCell(
                                     valign_block(50 * (1 - equation_width)),
                                     pf.Div(pf.Para(*math_caption),
