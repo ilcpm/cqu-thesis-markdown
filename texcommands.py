@@ -72,25 +72,37 @@ const_commands = {
 
 def toc(title=index_str):
     return [
-        pf.Div(pf.Para(pf.Str(title)), attributes={
-               "custom-style": "TOC Heading"}),
-        pf.RawBlock(r"""<w:sdt><w:sdtPr><w:docPartObj><w:docPartGallery w:val="Table of Contents"/><w:docPartUnique/></w:docPartObj></w:sdtPr><w:sdtContent><w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText><w:fldChar w:fldCharType="separate"/><w:fldChar w:fldCharType="end"/></w:r></w:p></w:sdtContent></w:std>""",
-                    format="openxml")
+        pf.Div(pf.Para(pf.Str(title)),
+               attributes={"custom-style": "TOC Heading"}),
+        pf.RawBlock(
+            r"""<w:sdt><w:sdtPr><w:docPartObj><w:docPartGallery w:val="Table of Contents"/><w:docPartUnique/></w:docPartObj></w:sdtPr><w:sdtContent><w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText><w:fldChar w:fldCharType="separate"/><w:fldChar w:fldCharType="end"/></w:r></w:p></w:sdtContent></w:std>""",
+            format="openxml")
     ]
 
 
+null_para = pf.Para(pf.Span())
 fun_commands = {
     'refs':
     lambda x: pf.RawInline(f'<w:fldSimple w:instr=" REF {x} \\h "/>',
                            format="openxml"),
     'KeyWord':
-    lambda x: pf.Para(
-        pf.Span(pf.Str("关键词："), attributes={'custom-style': 'Key Word'}),
-        pf.Str(x)),
+    lambda x: [
+        null_para,
+        pf.Para(
+            pf.Span(pf.Str("关键词："), attributes={'custom-style': 'Key Word'}),
+            pf.Str(x))
+    ],
     'KeyWord2':
-    lambda x: pf.Para(
-        pf.Span(pf.Str("Keywords: "), attributes={'custom-style': 'Key Word'}),
-        pf.Str(x)),
+    lambda x: [
+        null_para,
+        pf.Para(
+            pf.Span(pf.Str("Keywords: "),
+                    attributes={'custom-style': 'Key Word'}), pf.Str(x))
+    ],
+    'newPara':
+    lambda x="1": [null_para] * (1 if x == "" else int(x)),
+    'Reference':
+    lambda x: pf.Div(identifier='refs'),
     'toc':
     toc
 }
@@ -121,7 +133,8 @@ class ConstTexCommandReplace():
                     re_result = self.tex_re.fullmatch(elem.text)
                     if re_result:
                         if re_result[1] in self.commands:
-                            elem = self.commands[re_result[1]](re_result[2])
+                            elem = self.commands[re_result[1]](
+                                re_result[2] if re_result[2] else '')
 
         # pf.debug('o:', elem)
         return elem

@@ -49,6 +49,17 @@ $$ x=y $${-}
 
 图 [@fig1-no]，其标题为[@fig1-zh]；图[@fig2-no]，其中文标题为[@fig2-zh]，英文标题为[@fig2-en]。
 
+## 有序号章节3
+
+下面有一个空段落`\newPara`:
+
+\newPara
+
+下面有三个空段落`\newPara{3}`:
+
+\newPara{3}
+
+这就是`\newPara`。
 
 # 参考文献 {.refs}
 
