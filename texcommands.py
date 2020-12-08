@@ -98,13 +98,11 @@ fun_commands = {
                            format="openxml"),
     'KeyWord':
     lambda x: pf.Para(
-        pf.Span(pf.Str("关键词："),
-               attributes={'custom-style': 'Key Word'}),
+        pf.Span(pf.Str("关键词："), attributes={'custom-style': 'Key Word'}),
         pf.Str(x)),
     'KeyWord2':
     lambda x: pf.Para(
-        pf.Span(pf.Str("Keywords: "),
-                attributes={'custom-style': 'Key Word'}),
+        pf.Span(pf.Str("Keywords: "), attributes={'custom-style': 'Key Word'}),
         pf.Str(x)),
     'toc':
     toc
@@ -129,8 +127,8 @@ class ConstTexCommandReplace():
             text = elem.text if elem.text[-2:] != "{}" else elem.text[:-2]
             text = text.strip()
             if elem.format == 'tex':
-                if text in self.commands:
-                    elem = self.commands[text]
+                if text in self.const_commands:
+                    elem = self.const_commands[text]
                 else:
                     pf.debug(elem)
                     re_result = self.tex_re.fullmatch(elem.text)
