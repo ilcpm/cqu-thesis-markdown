@@ -11,12 +11,14 @@ def valign_block(width):
         format="openxml")
 
 
-section_no = pf.RawInline(f'''<w:fldSimple w:instr=" STYLEREF {top_level} \s"/>''',
-                          format="openxml")
-equation_no = pf.RawInline(f'''<w:fldSimple w:instr=" SEQ Equation \* ARABIC \s {top_level}"/>''',
-                           format="openxml")
-figure_no = pf.RawInline(f'''<w:fldSimple w:instr=" SEQ Figure \* ARABIC \s {top_level}"/>''',
-                           format="openxml")
+section_no = pf.RawInline(
+    f'''<w:fldSimple w:instr=" STYLEREF {top_level} \s"/>''', format="openxml")
+equation_no = pf.RawInline(
+    f'''<w:fldSimple w:instr=" SEQ Equation \* ARABIC \s {top_level}"/>''',
+    format="openxml")
+figure_no = pf.RawInline(
+    f'''<w:fldSimple w:instr=" SEQ Figure \* ARABIC \s {top_level}"/>''',
+    format="openxml")
 
 
 class MathReplace():
@@ -43,7 +45,7 @@ class MathReplace():
                                 content_group[-1][1][-1], "")
                             continue
                         else:
-                            match = self.anchor_re.match(elem1.text)
+                            match = self.anchor_re.fullmatch(elem1.text)
                             if match:
                                 content_group[-1][1][-1] = (
                                     content_group[-1][1][-1], match[1])
@@ -80,12 +82,12 @@ class MathReplace():
                                 notag = False
                                 tag = ''
                         math_caption = [
-                            pf.Span(pf.Str('('),section_no,
+                            pf.Span(pf.Str('('),
+                                    section_no,
                                     pf.Str('.'),
                                     equation_no,
                                     pf.Str(')'),
-                                    identifier=tag
-                            )
+                                    identifier=tag)
                         ] if not notag else []
 
                         rows.append(
@@ -96,8 +98,7 @@ class MathReplace():
                                     valign_block(100 * equation_width),
                                     pf.Div(pf.Para(math_elem),
                                            attributes={
-                                               'custom-style':
-                                               'Equation'
+                                               'custom-style': 'Equation'
                                            })),
                                 pf.TableCell(
                                     valign_block(50 * (1 - equation_width)),

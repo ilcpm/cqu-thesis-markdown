@@ -1,5 +1,6 @@
 import panflute as pf
 import typing
+import re
 index_str = "目录"
 
 pageInfoStr = r'''<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="1134" w:right="1418" w:bottom="1418" w:left="1418" w:header="907" w:footer="851" w:gutter="567"/>'''
@@ -28,13 +29,15 @@ const_commands = {
     pf.RawInline("<w:r><w:tab/></w:r>", format="openxml"),
     r'\newSection{UpperRoman}':
     pf.RawBlock(
-        r"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="upperRoman" w:start="1"/>"""+ pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
+        r"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="upperRoman" w:start="1"/>"""
+        + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
         format="openxml"),
     r'\newSection{Arabic}':
     pf.RawBlock(
-        f"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="decimal" w:start="1"/>"""+ pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
+        f"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="decimal" w:start="1"/>"""
+        + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
         format="openxml"),
-    r'\toc{目    录}':[
+    r'\toc{目    录}': [
         pf.Div(pf.Para(pf.Str("目    录")),
                attributes={"custom-style": "TOC Heading"}),
         pf.RawBlock(r"""<w:sdt>
@@ -54,9 +57,8 @@ const_commands = {
                     format="openxml")
     ],
     r'\ref{eq1}':
-    pf.RawInline(
-        r"""<w:fldSimple w:instr=" REF eq1 \h "/>""",
-        format="openxml"),
+    pf.RawInline(r"""<w:fldSimple w:instr=" REF eq1 \h "/>""",
+                 format="openxml"),
     r'\Caption2{fig}':
     pf.RawInline(
         r"""<w:r><w:t>Figure</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \c "/>""",
@@ -70,15 +72,38 @@ const_commands = {
 
 def toc(title=index_str):
     return [
-        pf.Div(pf.Para(pf.Str(title)),
-               attributes={"custom-style": "TOC Heading"}),
-        pf.RawBlock(r"""<w:p><w:r>
-            <w:fldChar w:fldCharType="begin"/>
-            <w:instrText >TOC \o "1-3" \h \z \u</w:instrText>
-            <w:fldChar w:fldCharType="end"/>
-            </w:r></w:p>""",
+        pf.Div(pf.Para(pf.Str(title))),
+        pf.RawBlock(r"""<w:sdt>
+        <w:sdtPr>
+        <w:docPartObj>
+        <w:docPartGallery w:val="Table of Contents"/>
+        <w:docPartUnique/>
+        </w:docPartObj>
+        </w:sdtPr>
+        <w:sdtContent>
+        <w:p><w:r>
+        <w:fldChar w:fldCharType="begin" w:dirty="true"/>
+        <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
+        <w:fldChar w:fldCharType="separate"/>
+        <w:fldChar w:fldCharType="end"/>
+        </w:r></w:p></w:sdtContent>""",
                     format="openxml")
     ]
+
+
+fun_commands = {
+    'refs':
+    lambda x: pf.RawInline(f'<w:fldSimple w:instr=" REF {x} \\h "/>',
+                           format="openxml"),
+    'KeyWord':
+    lambda x: pf.Div(pf.Para(pf.Strong(pf.Str("关键词：")), pf.Str(x)),
+                     attributes={'custom-style': 'Key Word'}),
+    'KeyWord2':
+    lambda x: pf.Div(pf.Para(pf.Strong(pf.Str("Keywords: ")), pf.Str(x)),
+                     attributes={'custom-style': 'Key Word 2'}),
+    'toc':
+    toc
+}
 
 
 def newSection(fmt: str = "", start: str = ""):
@@ -91,6 +116,8 @@ def newSection(fmt: str = "", start: str = ""):
 
 
 class ConstTexCommandReplace():
+    tex_re = re.compile(r'\\([^{ ]*)(?:{(.*)})? ?')
+
     def action(self, elem, doc):
         # pf.debug('s:', elem)
         if isinstance(elem, (pf.RawBlock, pf.RawInline)):
@@ -99,20 +126,24 @@ class ConstTexCommandReplace():
             if elem.format == 'tex':
                 if text in self.commands:
                     elem = self.commands[text]
-                # else:
-                #     elem = eval(
-                #         elem.text.replace("{", "(", 1).replace(
-                #             '\\', '', 1)[::-1].replace("}", ")", 1)[::-1])
+                else:
+                    pf.debug(elem)
+                    re_result = self.tex_re.fullmatch(elem.text)
+                    if re_result:
+                        if re_result[1] in self.commands:
+                            elem = self.commands[re_result[1]](re_result[2])
 
         # pf.debug('o:', elem)
         return elem
 
-    def __init__(self, comands):
-        self.commands = comands
+    def __init__(self, const_comands, commands):
+        self.const_commands = const_comands
+        self.commands = commands
 
 
 def main(doc=None):
-    replacer = ConstTexCommandReplace(comands=const_commands)
+    replacer = ConstTexCommandReplace(const_comands=const_commands,
+                                      commands=fun_commands)
     return pf.run_filter(replacer.action, doc=doc)
 
 

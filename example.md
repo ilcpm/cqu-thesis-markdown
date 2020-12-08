@@ -2,9 +2,13 @@
 
 中文摘要
 
+\KeyWord{关键词1，关键词2}
+
 # Abstract {.english-abstract}
 
 英文摘要
+
+\KeyWord2{Keyword1, keyword2}
 
 # 有序号章节1
 
