@@ -8,8 +8,8 @@ pageInfoStr = r'''<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="11
 const_commands = {
     r'\newLine':
     pf.LineBreak(),
-    r'\t':
-    pf.Str('\t'),
+    # r'\t':
+    # pf.Str('\t'),
     r'\newPage':
     pf.RawBlock("<w:p><w:r><w:br w:type=\"page\" /></w:r></w:p>",
                 format="openxml"),
@@ -37,57 +37,44 @@ const_commands = {
         f"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="decimal" w:start="1"/>"""
         + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
         format="openxml"),
-    r'\toc{目    录}': [
-        pf.Div(pf.Para(pf.Str("目    录")),
-               attributes={"custom-style": "TOC Heading"}),
-        pf.RawBlock(r"""<w:sdt>
-        <w:sdtPr>
-        <w:docPartObj>
-        <w:docPartGallery w:val="Table of Contents"/>
-        <w:docPartUnique/>
-        </w:docPartObj>
-        </w:sdtPr>
-        <w:sdtContent>
-        <w:p><w:r>
-        <w:fldChar w:fldCharType="begin" w:dirty="true"/>
-        <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
-        <w:fldChar w:fldCharType="separate"/>
-        <w:fldChar w:fldCharType="end"/>
-        </w:r></w:p></w:sdtContent></w:std>""",
-                    format="openxml")
-    ],
-    r'\ref{eq1}':
-    pf.RawInline(r"""<w:fldSimple w:instr=" REF eq1 \h "/>""",
-                 format="openxml"),
-    r'\Caption2{fig}':
-    pf.RawInline(
-        r"""<w:r><w:t>Figure</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \c "/>""",
-        format="openxml"),
-    r'\Caption{fig}':
-    pf.RawInline(
-        r"""<w:r><w:t>图</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \* ARABIC \s 1 "/>""",
-        format="openxml"),
+    # r'\toc{目    录}': [
+    #     pf.Div(pf.Para(pf.Str("目    录")),
+    #            attributes={"custom-style": "TOC Heading"}),
+    #     pf.RawBlock(r"""<w:sdt>
+    #     <w:sdtPr>
+    #     <w:docPartObj>
+    #     <w:docPartGallery w:val="Table of Contents"/>
+    #     <w:docPartUnique/>
+    #     </w:docPartObj>
+    #     </w:sdtPr>
+    #     <w:sdtContent>
+    #     <w:p><w:r>
+    #     <w:fldChar w:fldCharType="begin" w:dirty="true"/>
+    #     <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
+    #     <w:fldChar w:fldCharType="separate"/>
+    #     <w:fldChar w:fldCharType="end"/>
+    #     </w:r></w:p></w:sdtContent></w:std>""",
+    #                 format="openxml")
+    # ],
+    # r'\ref{eq1}':
+    # pf.RawInline(r"""<w:fldSimple w:instr=" REF eq1 \h "/>""",
+    #              format="openxml"),
+    # r'\Caption2{fig}':
+    # pf.RawInline(
+    #     r"""<w:r><w:t>Figure</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \c "/>""",
+    #     format="openxml"),
+    # r'\Caption{fig}':
+    # pf.RawInline(
+    #     r"""<w:r><w:t>图</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \* ARABIC \s 1 "/>""",
+    #     format="openxml"),
 }
 
 
 def toc(title=index_str):
     return [
-        pf.Div(pf.Para(pf.Str(title)),
-               attributes={"custom-style": "TOC Heading"}),
-        pf.RawBlock(r"""<w:sdt>
-        <w:sdtPr>
-        <w:docPartObj>
-        <w:docPartGallery w:val="Table of Contents"/>
-        <w:docPartUnique/>
-        </w:docPartObj>
-        </w:sdtPr>
-        <w:sdtContent>
-        <w:p><w:r>
-        <w:fldChar w:fldCharType="begin" w:dirty="true"/>
-        <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
-        <w:fldChar w:fldCharType="separate"/>
-        <w:fldChar w:fldCharType="end"/>
-        </w:r></w:p></w:sdtContent></w:std>""",
+        pf.Div(pf.Para(pf.Str(title)), attributes={
+               "custom-style": "TOC Heading"}),
+        pf.RawBlock(r"""<w:sdt><w:sdtPr><w:docPartObj><w:docPartGallery w:val="Table of Contents"/><w:docPartUnique/></w:docPartObj></w:sdtPr><w:sdtContent><w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText><w:fldChar w:fldCharType="separate"/><w:fldChar w:fldCharType="end"/></w:r></w:p></w:sdtContent></w:std>""",
                     format="openxml")
     ]
 
