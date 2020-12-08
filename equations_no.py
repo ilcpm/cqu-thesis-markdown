@@ -1,6 +1,6 @@
 import panflute as pf
 import copy
-
+import re
 top_level = 1
 equation_width = 0.7
 
@@ -19,6 +19,7 @@ equation_no = pf.RawInline(f'''<w:fldSimple w:instr=" SEQ Equation \* ARABIC \s 
 
 class MathReplace():
     math_no = 1
+    anchor_re = re.compile(r'{#([^}]+)}')
 
     def action(self, elem, doc):
         pf.debug('s:', elem)
@@ -26,9 +27,25 @@ class MathReplace():
             rows = []
             content_group = []
             for elem1 in elem.content:
-                if isinstance(elem1, (pf.Space, pf.SoftBreak)):
-                    if content_group and content_group[-1][0]:
+                if content_group and content_group[-1][0]:
+                    if isinstance(elem1, (pf.Space, pf.SoftBreak)):
                         continue
+                    elif isinstance(elem1, pf.Str) and isinstance(
+                            content_group[-1][1][-1], pf.Math):
+                        if elem1.text == '{}':
+                            content_group[-1][1][-1] = (
+                                content_group[-1][1][-1], None)
+                            continue
+                        elif elem1.text == '{.notag}' or elem1.text == '{-}':
+                            content_group[-1][1][-1] = (
+                                content_group[-1][1][-1], "")
+                            continue
+                        else:
+                            match = self.anchor_re.match(elem1.text)
+                            if match:
+                                content_group[-1][1][-1] = (
+                                    content_group[-1][1][-1], match[1])
+                                continue
                 is_math = isinstance(elem1,
                                      pf.Math) and elem1.format == 'DisplayMath'
                 if content_group:
@@ -42,11 +59,33 @@ class MathReplace():
                 if elem_group[0]:
                     rows = []
                     for math_elem in elem_group[1]:
+                        if isinstance(math_elem, pf.Math):
+                            math_elem = math_elem
+                            notag = False
+                            tag = ''
+                        else:
+                            if isinstance(math_elem[1], str):
+                                if math_elem[1]:
+                                    tag = math_elem[1]
+                                    notag = False
+                                else:
+                                    tag = ''
+                                    notag = True
+                                    pf.debug('notag')
+                                math_elem = math_elem[0]
+                            else:
+                                math_elem = math_elem[0]
+                                notag = False
+                                tag = ''
                         math_caption = [
-                            pf.Str('('), section_no,
-                            pf.Str('.'), equation_no,
+                            pf.Str('('),
+                            pf.Span(section_no,
+                                    pf.Str('.'),
+                                    equation_no,
+                                    identifier=tag),
                             pf.Str(')')
-                        ]
+                        ] if not notag else []
+
                         rows.append(
                             pf.TableRow(
                                 pf.TableCell(
