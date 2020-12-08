@@ -27,6 +27,19 @@ $$ x=y $${-}
 
 方程组$$ \begin{cases} x=y\\x=y+1\end{cases} $$ 无解！
 
+图 1：单语有标签 `fig1`（编号标签`fig1-no`，中文标题标签`fig1-zh`）
+
+![单语](cqu.png){#fig1 width=25%}
+
+图 2：双语有标签 `fig2`（同图 1，外加英文标题标签`fig2-en`）
+
+![中文\Caption2{fig}English](cqu.png){#fig2 width=25%}
+
+图 3：无编号双语标签
+
+![中文\Caption2{fig}English](cqu.png){- width=25%}
+
+
 # 参考文献 {.refs}
 
 ::: {#refs}
