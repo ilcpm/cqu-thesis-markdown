@@ -16,6 +16,8 @@ pandoc example.md  --filter equations_no.py --filter header_convert.py --filter 
 - `Heading Numbering`：标题的编号列表
 - `Key Word`：“关键字”的前缀字符样式
 - `Equation`：显示公式的样式，带有段前段后各一行，用来保证公式可以完整显示
+- `Appendix Heading 2`: 附录二级标题
+- `Appendix Heading 3`: 附录三级标题
 
 ## 命令定义
 

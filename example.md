@@ -1,10 +1,10 @@
-# 摘要 {.chinese-abstract}
+# 摘要 {-}
 
 中文摘要
 
 \KeyWord{关键词1，关键词2}
 
-# Abstract {.english-abstract}
+# Abstract {-}
 
 英文摘要
 
@@ -61,4 +61,4 @@ $$ x=y $${-}
 
 获奖
 
-# 致谢 {.thinks}
+# 致谢 {.thanks}
