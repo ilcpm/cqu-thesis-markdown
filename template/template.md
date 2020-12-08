@@ -150,12 +150,12 @@ $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 ::: {#refs}
 :::
 
-# 附录{- .appendix}
+# 附录{.appendix}
 
-## A{- .appendix}
+## A
 
 附录A中的内容
 
-## B{- .appendix}
+## B
 
 附录B中的内容
