@@ -13,7 +13,7 @@ figure_no2 = pf.RawInline(
     format="openxml")
 
 
-class MathReplace():
+class FigCaptionReplace():
     math_no = 1
     anchor_re = re.compile(r'{#([^}]+)}')
 
@@ -63,7 +63,7 @@ class MathReplace():
 
 
 def main(doc=None):
-    replacer = MathReplace()
+    replacer = FigCaptionReplace()
     return pf.run_filter(replacer.action, doc=doc)
 
 

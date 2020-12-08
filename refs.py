@@ -15,7 +15,7 @@ class refsReplacer():
             pf.debug(citation.id)
             if citation.id in self.bookmarks:
                 elem = pf.RawInline(
-                    f'<w:fldSimple w:instr=" REF {citation.id} eq1 \\h "/>',
+                    f'<w:fldSimple w:instr=" REF {citation.id} \\h "/>',
                     format="openxml")
         return elem
 
