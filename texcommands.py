@@ -119,7 +119,7 @@ class ConstTexCommandReplace():
     tex_re = re.compile(r'\\([^{ ]*)(?:{(.*)})? ?')
 
     def action(self, elem, doc):
-        pf.debug('s:', elem)
+        # pf.debug('s:', elem)
         if isinstance(elem, (pf.RawBlock, pf.RawInline)):
             text = elem.text if elem.text[-2:] != "{}" else elem.text[:-2]
             text = text.strip()
@@ -133,7 +133,7 @@ class ConstTexCommandReplace():
                         if re_result[1] in self.commands:
                             elem = self.commands[re_result[1]](re_result[2])
 
-        pf.debug('o:', elem)
+        # pf.debug('o:', elem)
         return elem
 
     def __init__(self, const_comands, commands):

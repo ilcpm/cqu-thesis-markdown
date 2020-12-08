@@ -5,17 +5,17 @@ class refsReplacer():
     def find(self, elem, doc=None):
         if hasattr(elem, 'identifier') and elem.identifier:
             self.bookmarks.add(elem.identifier)
-            pf.debug('anchor:', elem.identifier)
+            # pf.debug('anchor:', elem.identifier)
         return elem
 
     def replace(self, elem, doc):
         if isinstance(elem, pf.Cite):
             elem: pf.Cite
             citation: pf.Citation = elem.citations[0]
-            pf.debug(citation.id)
+            # pf.debug(citation.id)
             if citation.id in self.bookmarks:
                 elem = pf.RawInline(
-                    f'<w:fldSimple w:instr=" REF {citation.id} eq1 \\h "/>',
+                    f'<w:fldSimple w:instr=" REF {citation.id} \\h "/>',
                     format="openxml")
         return elem
 
