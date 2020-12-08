@@ -52,7 +52,19 @@ const_commands = {
         <w:fldChar w:fldCharType="end"/>
         </w:r></w:p></w:sdtContent>""",
                     format="openxml")
-    ]
+    ],
+    r'\ref{eq1}':
+    pf.RawInline(
+        r"""<w:fldSimple w:instr=" REF eq1 \h "/>""",
+        format="openxml"),
+    r'\secondCaption{fig}':
+    pf.RawInline(
+        r"""<w:r><w:t>Figure</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \c "/>""",
+        format="openxml"),
+    r'\Caption{fig}':
+    pf.RawInline(
+        r"""<w:r><w:t>图</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \* ARABIC \s 1 "/>""",
+        format="openxml"),
 }
 
 

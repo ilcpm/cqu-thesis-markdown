@@ -15,6 +15,8 @@ section_no = pf.RawInline(f'''<w:fldSimple w:instr=" STYLEREF {top_level} \s"/>'
                           format="openxml")
 equation_no = pf.RawInline(f'''<w:fldSimple w:instr=" SEQ Equation \* ARABIC \s {top_level}"/>''',
                            format="openxml")
+figure_no = pf.RawInline(f'''<w:fldSimple w:instr=" SEQ Figure \* ARABIC \s {top_level}"/>''',
+                           format="openxml")
 
 
 class MathReplace():
