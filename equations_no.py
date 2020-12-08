@@ -11,19 +11,9 @@ def valign_block(width):
         format="openxml")
 
 
-section_no = pf.RawInline(f'''<w:r>
-    <w:fldChar w:fldCharType="begin" w:dirty="true"/>
-    <w:instrText xml:space="preserve">StyleRef {top_level} \\s</w:instrText>
-    <w:fldChar w:fldCharType="separate"/>
-    <w:fldChar w:fldCharType="end"/><
-    /w:r>''',
+section_no = pf.RawInline(f'''<w:fldSimple w:instr=" SEQ Figure \* ARABIC \s {top_level}"/>''',
                           format="openxml")
-equation_no = pf.RawInline(f'''<w:r>
-    <w:fldChar w:fldCharType="begin" w:dirty="true"/>
-    <w:instrText xml:space="preserve">Seq equations \\s {top_level}</w:instrText>
-    <w:fldChar w:fldCharType="separate"/>
-    <w:fldChar w:fldCharType="end"/>
-    </w:r>''',
+equation_no = pf.RawInline(f'''<w:fldSimple w:instr=" SEQ Equation \* ARABIC \s {top_level}"/>''',
                            format="openxml")
 
 
