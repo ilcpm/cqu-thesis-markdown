@@ -71,11 +71,11 @@ for k in List:  # 将list打印输出，五个一换行
 
 正文内容123
 
-![这里需要一个图片](nju.png)
+![\Caption{fig}这里需要一个图片](nju.png)
 
 ### H3 Numbered
 
-![题注需要中英双题注\newLine{} \secondCaption{fig} Caption need both Chinese and English](nju.png)
+![\Caption{fig}题注需要中英双题注\newLine{} \secondCaption{fig} Caption need both Chinese and English](nju.png)
 
 #### H4 Numbered
 
