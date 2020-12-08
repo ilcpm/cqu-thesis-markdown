@@ -92,7 +92,7 @@ def newSection(fmt: str = "", start: str = ""):
 
 class ConstTexCommandReplace():
     def action(self, elem, doc):
-        pf.debug('s:', elem)
+        # pf.debug('s:', elem)
         if isinstance(elem, (pf.RawBlock, pf.RawInline)):
             text = elem.text if elem.text[-2:] != "{}" else elem.text[:-2]
             text = text.strip()
@@ -104,7 +104,7 @@ class ConstTexCommandReplace():
                 #         elem.text.replace("{", "(", 1).replace(
                 #             '\\', '', 1)[::-1].replace("}", ")", 1)[::-1])
 
-        pf.debug('o:', elem)
+        # pf.debug('o:', elem)
         return elem
 
     def __init__(self, comands):

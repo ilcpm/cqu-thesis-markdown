@@ -19,7 +19,7 @@ class FigCaptionReplace():
 
     def action(self, elem, doc):
         if isinstance(elem, pf.Image):
-            pf.debug("Image!")
+            # pf.debug("Image!")
             elem: pf.Image
             cap2_begin = False
             cap2 = []
