@@ -4,6 +4,14 @@ import re
 index_str = "目录"
 
 pageInfoStr = r'''<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="1134" w:right="1418" w:bottom="1418" w:left="1418" w:header="907" w:footer="851" w:gutter="567"/>'''
+header_footer = r"""
+<w:headerReference w:type="even" r:id="rId9" />
+<w:headerReference w:type="default" r:id="rId11" />
+<w:footerReference w:type="even" r:id="rId14" />
+<w:footerReference w:type="default" r:id="rId13" />
+<w:headerReference w:type="first" r:id="rId10" />
+<w:footerReference w:type="first" r:id="rId12" />
+"""
 
 const_commands = {
     r'\newLine':
@@ -29,7 +37,7 @@ const_commands = {
     pf.RawInline("<w:r><w:tab/></w:r>", format="openxml"),
     r'\newSection{UpperRoman}':
     pf.RawBlock(
-        r"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="upperRoman" w:start="1"/>"""
+        r"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="upperRoman" w:start="1"/>"""+ header_footer
         + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
         format="openxml"),
     r'\newSection{Arabic}':
