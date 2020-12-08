@@ -72,7 +72,8 @@ const_commands = {
 
 def toc(title=index_str):
     return [
-        pf.Div(pf.Para(pf.Str(title))),
+        pf.Div(pf.Para(pf.Str(title)),
+               attributes={"custom-style": "TOC Heading"}),
         pf.RawBlock(r"""<w:sdt>
         <w:sdtPr>
         <w:docPartObj>
