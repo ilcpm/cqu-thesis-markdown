@@ -40,6 +40,7 @@ if a == 1:
 
 ```text
 纯文本测试
+这里和上面的两行python代码会在一个框里
 plain text
 ```
 
@@ -93,11 +94,25 @@ for k in List:  # 将list打印输出，五个一换行
 
 正文内容123
 
-![\Caption{fig}这里需要一个图片](nju.png)
+![这里需要一个图片](cqu.png)
 
 ### H3 Numbered
 
-![\Caption{fig}题注需要中英双题注\newLine{} \Caption2{fig} Caption need both Chinese and English](nju.png)
+![题注需要中英双题注 \Caption2{fig} Caption need both Chinese and English](cqu.png)
+
+图 1：单语有标签 `fig1`（编号标签`fig1-no`，中文标题标签`fig1-zh`）
+
+![单语](cqu.png){#fig1 width=25%}
+
+图 2：双语有标签 `fig2`（同图 1，外加英文标题标签`fig2-en`）
+
+![中文\Caption2{fig}English](cqu.png){#fig2 width=25%}
+
+图 3：无编号双语标签
+
+![中文\Caption2{fig}English](cqu.png){- width=25%}
+
+图 [@fig1-no]，其标题为[@fig1-zh]；图[@fig2-no]，其中文标题为[@fig2-zh]，英文标题为[@fig2-en]。
 
 #### H4 Numbered
 
