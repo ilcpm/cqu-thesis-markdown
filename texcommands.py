@@ -57,7 +57,7 @@ const_commands = {
     pf.RawInline(
         r"""<w:fldSimple w:instr=" REF eq1 \h "/>""",
         format="openxml"),
-    r'\secondCaption{fig}':
+    r'\Caption2{fig}':
     pf.RawInline(
         r"""<w:r><w:t>Figure</w:t></w:r><w:fldSimple w:instr=" STYLEREF 1 \s"/><w:r><w:t>.</w:t></w:r><w:fldSimple w:instr=" SEQ Figure \c "/>""",
         format="openxml"),

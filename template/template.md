@@ -19,7 +19,7 @@ English Abstract.
 
 按照排版规定英文标题需要加粗
 
-\SecondKeyWord{Key word 1, key word 2, key word 3}
+\KeyWord2{Key word 1, key word 2, key word 3}
 
 \toc{目    录}
 
@@ -37,6 +37,28 @@ English Abstract.
 if a == 1:
     print("str")
 ```
+
+```text
+纯文本测试
+plain text
+```
+
+分割两段代码
+
+```xml
+<w:lvl w:ilvl="3">
+    <w:start w:val="1"/>
+    <w:numFmt w:val="decimalEnclosedCircleChinese"/>
+    <w:pStyle w:val="4"/>
+    <w:lvlText w:val="%4"/>
+    <w:lvlJc w:val="left"/>
+    <w:pPr>
+        <w:ind w:left="0" w:firstLine="0"/>
+    </w:pPr>
+</w:lvl>
+```
+
+分割两段代码
 
 ```python
 # 绝对素数.py
@@ -75,7 +97,7 @@ for k in List:  # 将list打印输出，五个一换行
 
 ### H3 Numbered
 
-![\Caption{fig}题注需要中英双题注\newLine{} \secondCaption{fig} Caption need both Chinese and English](nju.png)
+![\Caption{fig}题注需要中英双题注\newLine{} \Caption2{fig} Caption need both Chinese and English](nju.png)
 
 #### H4 Numbered
 
