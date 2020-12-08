@@ -53,7 +53,7 @@ const_commands = {
         <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
         <w:fldChar w:fldCharType="separate"/>
         <w:fldChar w:fldCharType="end"/>
-        </w:r></w:p></w:sdtContent>""",
+        </w:r></w:p></w:sdtContent></w:std>""",
                     format="openxml")
     ],
     r'\ref{eq1}':
@@ -87,7 +87,7 @@ def toc(title=index_str):
         <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
         <w:fldChar w:fldCharType="separate"/>
         <w:fldChar w:fldCharType="end"/>
-        </w:r></w:p></w:sdtContent>""",
+        </w:r></w:p></w:sdtContent></w:std>""",
                     format="openxml")
     ]
 
