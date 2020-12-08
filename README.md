@@ -15,6 +15,7 @@ pandoc example.md  --filter equations_no.py --filter section_break.py --filter h
 - `Plain Text`: 无缩进的普通文本，用做公式编号的样式等
 - `Heading Numbering`：标题的编号列表
 - `Key Word`：“关键字”的前缀字符样式
+- `Equation`：显示公式的样式，带有段前段后各一行，用来保证公式可以完整显示
 
 ## 命令定义
 
@@ -32,6 +33,9 @@ pandoc example.md  --filter equations_no.py --filter section_break.py --filter h
   - 实现原理：替换为ooxml代码或pandoc原生的`LineBreak`对象
 - `\Caption2{fig}`：插入双语题注的第二题注时，用该命令产生第二语言的编号前缀，例如中英题注中，默认会生成中文的题注编号`图1.3`，而英文题注的编号则须用该命令产生`Fig 1.3`
   - 实现原理：预设第二题注的前缀，插入域代码生成编号
+
+TODO:
+
 - `\Reference{}`：在当前位置插入参考文献，因为排版要求规定`附录`在`参考文献`之后，而pandoc默认参考文献插入在文档最后，所以需要定义命令以在任意位置插入参考文献
 - \`{some code}\`{=field}：`some code`为域代码，`{=field}`表示把该部分内容作为域代码处理，通过该语法可以实现插入自定义域代码的功能
 - `[被标记文本]{#书签名字}`：可以对`被标记文本`标记一个名为`书签名字`的书签，通过书签和域代码配合，可以实现交叉引用。该功能为pandoc自带功能
@@ -53,15 +57,17 @@ pandoc example.md  --filter equations_no.py --filter section_break.py --filter h
       </w:compat>
       ```
 
+- 2020.12.08~2020.12.09：
+  - 大量完善模版和相关功能
+
 ## 模版TODO
 
-- 内联代码样式
 - 术语表
 - 表目录图目录
 - 封面
 - 标题编号的制表符与目录的位置微调（更好看）
 - 尾注
-- 脚注的分隔线
+- 脚注的分隔线（这玩意无解，只能最后导出之后用户手动调整）
 - 四级标题编号的带圈序号（等上面那个调好了再说）
 
     ```xml
