@@ -27,8 +27,6 @@ $$ x=y $${-}
 
 以下两个公式后有`{#a}`:$$x=y_0$${} {#a} $$x=y_1$$ {} {#a}
 
-图 [@fig1-no]，其标题为[@fig1-zh]；图[@fig2-no]，其中文标题为[@fig2-zh]，英文标题为[@fig2-en]。
-
 # 有序号章节2
 
 方程组$$ \begin{cases} x=y\\x=y+1\end{cases} $$ 无解！
@@ -44,6 +42,8 @@ $$ x=y $${-}
 图 3：无编号双语标签
 
 ![中文\Caption2{fig}English](cqu.png){- width=25%}
+
+图 [@fig1-no]，其标题为[@fig1-zh]；图[@fig2-no]，其中文标题为[@fig2-zh]，英文标题为[@fig2-en]。
 
 
 # 参考文献 {.refs}

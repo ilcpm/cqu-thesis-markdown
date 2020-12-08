@@ -98,6 +98,8 @@ for k in List:  # 将list打印输出，五个一换行
 
 ### H3 Numbered
 
+图 [@fig1-no]，其标题为[@fig1-zh]；图[@fig2-no]，其中文标题为[@fig2-zh]，英文标题为[@fig2-en]。
+
 ![题注需要中英双题注 \Caption2{fig} Caption need both Chinese and English](cqu.png)
 
 图 1：单语有标签 `fig1`（编号标签`fig1-no`，中文标题标签`fig1-zh`）
@@ -111,8 +113,6 @@ for k in List:  # 将list打印输出，五个一换行
 图 3：无编号双语标签
 
 ![中文\Caption2{fig}English](cqu.png){- width=25%}
-
-图 [@fig1-no]，其标题为[@fig1-zh]；图[@fig2-no]，其中文标题为[@fig2-zh]，英文标题为[@fig2-en]。
 
 #### H4 Numbered
 
