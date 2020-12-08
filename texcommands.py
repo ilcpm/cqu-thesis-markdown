@@ -96,11 +96,15 @@ fun_commands = {
     lambda x: pf.RawInline(f'<w:fldSimple w:instr=" REF {x} \\h "/>',
                            format="openxml"),
     'KeyWord':
-    lambda x: pf.Div(pf.Para(pf.Strong(pf.Str("关键词：")), pf.Str(x)),
-                     attributes={'custom-style': 'Key Word'}),
+    lambda x: pf.Para(
+        pf.Span(pf.Str("关键词："),
+               attributes={'custom-style': 'Key Word'}),
+        pf.Str(x)),
     'KeyWord2':
-    lambda x: pf.Div(pf.Para(pf.Strong(pf.Str("Keywords: ")), pf.Str(x)),
-                     attributes={'custom-style': 'Key Word 2'}),
+    lambda x: pf.Para(
+        pf.Span(pf.Str("Keywords: "),
+                attributes={'custom-style': 'Key Word'}),
+        pf.Str(x)),
     'toc':
     toc
 }
