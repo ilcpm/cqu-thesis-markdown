@@ -140,6 +140,12 @@ $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 
 # H1 Unnumbered{-}
 
+| 1             | 2              |
+| :-----------: | :------------: |
+| ![1](cqu.png) | ![2](code.png) |
+| ![1](code.png) | ![2](cqu.png) |
+
+
 脚注也是规定论文的元素之一[^1]，再来   
 一个脚注[^2]
 
@@ -150,9 +156,9 @@ $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 
 # 参考文献{-}
 
-<!-- \Reference{} -->
-::: {#refs}
-:::
+\Reference{}
+<!-- ::: {#refs}
+::: -->
 
 # 附录{.appendix}
 
