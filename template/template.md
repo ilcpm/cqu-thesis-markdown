@@ -4,15 +4,21 @@ csl: china-national-standard-gb-t-7714-2015-numeric.csl
 nocite: /
     @*
 ---
+<!-- 👆上面这里是pandoc的配置参数，这4行的作用是引入参考文献和参考文献的样式 -->
 
 # 摘    要{-}
 
-对于排版论文而言，LaTeX对新手极其不友好，学习成本高，还往往没有能力自己解决编译问题，而且；
-而Word虽然上手简单，可要排出一篇格式规范的论文也需要极高的学习和试错成本
+对于论文排版而言，学界通常会采用LaTeX方案，LaTeX虽然有着种种优点，然而却并不是那么容易上手，很多时候我们也不得不提交Word格式的论文。Word虽然上手简单，可要排版出一篇格式工整的论文也并非那么容易。
 
-讲一讲项目是做什么的
+那么有没有一种方案可以兼得二者的好处呢？或者说，在这中间同时保持对二者的支持呢？在有了pandoc这个工具之后，这个问题似乎有了方向。pandoc作为通用的文档转换器，可以将一种名为`Markdown`的纯文本格式转换为LaTeX，又可以把Markdown转换为Word文件；恰好LaTeX和Markdown因为都是纯文本，转换过程几乎不会受到阻碍。而Markdown本身，又有着两者无可替代的优越性——随着电子设备的不断普及，我们需要在纸张上排版的情况越来越少了，而Markdown正好符合了现代化电子记录的需求：实时渲染，设备无关，轻量化……所以乍一看似乎Markdown就是我们的救星。
 
-排版规范的来源
+然而Markdown因为其本身只是为记录而设计，并没有“格式”的概念，所以对于其而言，想要输出成一篇符合格式要求的Word文档，是很困难的。但是pandoc可以支持插件，在转换过程中进行处理！由此，我们的点子便借着这个插件功能出来了——
+
+只需要**制作一个符合格式规范的Word模版**，而后**编写插件**处理中途Word在功能、格式上的问题，即可输出满足要求的成品Word文档
+
+现在，你们看到的，便是由我们半年时间研究出的方案，使用 pandoc 生成出的接近成品的 word 文档。
+
+该文档中的格式，均是来自《重庆大学博士、硕士学位论文撰写格式标准及要求（2019年修订）》、《重庆大学普通本科毕业设计（论文）撰写规范要求》，具体见后文
 
 \KeyWord{排版，论文，格式转换}
 
@@ -20,9 +26,22 @@ nocite: /
 
 按照排版规定英文标题需要加粗
 
-English Abstract.
+Let us not wallow in the valley of despair, I say to you today, my friends.
 
-放一段悲惨世界的剧本
+And so even though we face the difficulties of today and tomorrow, I still have a dream. It is a dream deeply rooted in the American dream.
+
+I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident, that all men are created equal."
+
+I have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.
+I have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice, sweltering with the heat of oppression, will be transformed into an oasis of freedom and justice.
+
+I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.
+
+I have a dream today!
+
+I have a dream that one day, down in Alabama, with its vicious racists, with its governor having his lips dripping with the words of "interposition" and "nullification" -- one day right there in Alabama little black boys and black girls will be able to join hands with little white boys and white girls as sisters and brothers.
+
+I have a dream today!
 
 \KeyWord2{pandoc, Markdown, Word}
 
@@ -275,11 +294,34 @@ for k in List:  # 将list打印输出，五个一换行
 
 ## 引用文本块
 
-下面是一段对《歌剧魅影》剧本唱段台词的引用块
+下面是一段对《歌剧魅影》剧本唱段台词的引用块。（这里是借助文本编辑器通过正则表达式批量生成的规范化文本，仅作炫技展示之用）
 
-> \tabC{}你看这天上的云，聚了又散，散了又聚。\newLine{}人生离合，亦复如斯。
->
-> \tabR{}——金庸《神雕侠侣》
+> \tabC{}In dreams he came   
+> \tabC{}♪ 梦境中他近我身旁
+> 
+> \tabC{}That voice to me   
+> \tabC{}♪ 他的声音召唤着我
+> 
+> \tabC{}And speaks my name   
+> \tabC{}♪ 喃喃轻诉我的名字
+> 
+> \tabC{}And do I dream again   
+> \tabC{}♪ 我是否又重回梦境
+> 
+> \tabC{}For now I find   
+> \tabC{}♪ 此时此刻我才发现
+> 
+> \tabC{}The Phantom of the Opera is there   
+> \tabC{}♪ 歌剧魅影就在这里
+> 
+> \tabC{}Inside my mind   
+> \tabC{}♪ 潜伏在我心灵深处
+> 
+> \tabC{}Sing once again with me   
+> \tabC{}♪ 再次与我一起
+> 
+> \tabC{}Our strange duet   
+> \tabC{}♪ 同唱这奇妙的旋律
 
 # 参考文献的插入
 
