@@ -11,6 +11,7 @@ figure_no = pf.RawInline(
 figure_no2 = pf.RawInline(
     f'''<w:fldSimple w:instr=" SEQ Figure \c \* ARABIC \s {top_level} "/>''',
     format="openxml")
+    # 重复上一个编号
 
 
 class FigCaptionReplace():
