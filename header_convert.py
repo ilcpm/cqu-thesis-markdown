@@ -31,8 +31,11 @@ def headerConvert(elem, doc):
         # 暂时用不到
         # elif appendix:
         #     apply_style_header(elem, f"Appendix Heading {elem.level}")
-        if 'unnumbered' in elem.classes:# and (elem.level == 1 or not appendix):
+        if 'unnumbered' in elem.classes:  # and (elem.level == 1 or not appendix):
             apply_style_header(elem, f"Unnumbered Heading {elem.level}")
+        if elem.identifier:
+            elem.content = [pf.Span(*elem.content, identifier=elem.identifier)]
+            elem.identifier = ""
 
     return elem
 
