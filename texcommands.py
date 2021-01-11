@@ -140,7 +140,7 @@ class ConstTexCommandReplace():
                 if text in self.const_commands:
                     elem = self.const_commands[text]
                 else:
-                    pf.debug(elem)
+                    # pf.debug(elem)
                     re_result = self.tex_re.fullmatch(elem.text)
                     if re_result:
                         if re_result[1] in self.commands:
