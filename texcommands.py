@@ -48,7 +48,7 @@ const_commands = {
         f"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="decimal" w:start="1"/>"""
         + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
         format="openxml"),
-    # r'\toc{目    录}': [
+#     r'\toc{目    录}': [
     #     pf.Div(pf.Para(pf.Str("目    录")),
     #            attributes={"custom-style": "TOC Heading"}),
     #     pf.RawBlock(r"""<w:sdt>
