@@ -1,6 +1,10 @@
+$target = "template"
+$in = $target + ".md"
+$out = $target + ".docx"
+
 pandoc.exe `
-    .\template.md `
-    -o .\template.docx `
+    $in `
+    -o $out `
     --filter ..\header_convert.py `
     --filter ..\equations_no.py `
     --filter ..\figures_no.py `
@@ -11,4 +15,4 @@ pandoc.exe `
     # --filter ..\section_break.py `
     # --toc `
 
-start .\template.docx
+start $out
