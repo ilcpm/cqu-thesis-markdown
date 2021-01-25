@@ -25,8 +25,6 @@ pandoc example.md  --filter equations_no.py --filter header_convert.py --filter 
 除了 pandoc 预设的那几个样式外，还有以下几种特殊样式
 
 - `TOC Heading`: 目录标题
-- `Unnumbered Heading 1`: 无编号的一级标题
-- `Unnumbered Heading 2`: 无编号的二级标题
 - `Appendix Text`: 附录正文样式
 - `Plain Text`: 无缩进的普通文本，用做公式编号的样式等
 - `Heading Numbering`：标题的编号列表
@@ -34,6 +32,9 @@ pandoc example.md  --filter equations_no.py --filter header_convert.py --filter 
 - `Equation`：显示公式的样式，带有段前段后各一行，用来保证公式可以完整显示
 - `Appendix Heading 2`: 附录二级标题
 - `Appendix Heading 3`: 附录三级标题
+
+<!-- - `Unnumbered Heading 1`: 无编号的一级标题
+- `Unnumbered Heading 2`: 无编号的二级标题 -->
 
 ## 命令定义
 
@@ -105,6 +106,7 @@ TODO:
     - 正文中出现了比较高的公式，例如`\sum`，会使得20磅的行高不够，如何处理？
     - 解决方案找到，设置行距为最小值
     - [x] 修改模版
+    - **删除了Unnumbered Heading样式**
   - [x] 页眉
     - [x] 页眉的标题需要编号
     - [x] 目录区域的页眉需要再单独设置右上角的样式
@@ -173,6 +175,9 @@ TODO:
 - 参考文献的英文多作者要求使用`et al`而非`等`，修改csl文件？
   - 经查证，似乎csl语言不支持这样的写法，因为无法判断中文文献和英文文献的标准？
 - 编写《给小白的排版指导》，根据同学的不好的排版文档给出相应的指导和正确写法
+- **单面打印/双面打印**
+  - 需要制作两个模版……
+  - 只做一个然后让用户自己看着办？
 - [ ] Word模版的文档，分两部分
   - （本科检查不严格，全部按研究生办）
   - 《给小白的Word排版思维指导》
