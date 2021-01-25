@@ -10,11 +10,30 @@ pageInfoStr = r'''
 header_footer = r"""
 <w:headerReference w:type="even" r:id="rId9" />
 <w:headerReference w:type="default" r:id="rId11" />
+<w:footerReference w:type="even" r:id="rId15" />
+<w:footerReference w:type="default" r:id="rId14" />
+<w:headerReference w:type="first" r:id="rId10" />
+<w:footerReference w:type="first" r:id="rId13" />
+"""
+
+header_footer_TOC = r"""
+<w:headerReference w:type="even" r:id="rId9" />
+<w:headerReference w:type="default" r:id="rId12" />
+<w:footerReference w:type="even" r:id="rId15" />
+<w:footerReference w:type="default" r:id="rId14" />
+<w:headerReference w:type="first" r:id="rId10" />
+<w:footerReference w:type="first" r:id="rId13" />
+"""
+
+
+"""
+<w:headerReference w:type="even" r:id="rId9" />
+<w:headerReference w:type="default" r:id="rId11" />
 <w:footerReference w:type="even" r:id="rId14" />
 <w:footerReference w:type="default" r:id="rId13" />
 <w:headerReference w:type="first" r:id="rId10" />
-<w:footerReference w:type="first" r:id="rId12" />
-"""
+<w:footerReference w:type="first" r:id="rId12" />"""
+
 
 const_commands = {
     r'\newLine':
@@ -38,7 +57,17 @@ const_commands = {
         format="openxml"),
     r'\tab':
     pf.RawInline("<w:r><w:tab/></w:r>", format="openxml"),
-    r'\newSection{UpperRoman}':
+    r'\newSection{}':
+    pf.RawBlock(
+        r"""<w:p><w:pPr><w:sectPr>"""
+        + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
+        format="openxml"),
+    r'\newSection{TOC}':
+    pf.RawBlock(
+        r"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="upperRoman" />"""+ header_footer_TOC
+        + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",
+        format="openxml"),
+    r'\newSection{Abstract}':
     pf.RawBlock(
         r"""<w:p><w:pPr><w:sectPr><w:pgNumType w:fmt="upperRoman" w:start="1"/>"""+ header_footer
         + pageInfoStr + r"""</w:sectPr></w:pPr></w:p>""",

@@ -6,7 +6,7 @@ nocite: /
 ---
 <!-- 👆上面这里是pandoc的配置参数，这4行的作用是引入参考文献和参考文献的样式 -->
 
-# 摘    要{-}
+# 摘要{-}
 
 对于论文排版而言，学界通常会采用LaTeX方案，LaTeX虽然有着种种优点，然而却并不是那么容易上手，很多时候我们也不得不提交Word格式的论文。Word虽然上手简单，可要排版出一篇格式工整的论文也并非那么容易。
 
@@ -46,13 +46,15 @@ I have a dream today!
 
 \KeyWord2{pandoc, Markdown, Word}
 
+\newSection{Abstract}
+
 \toc{目    录}
 
 👆上面通过`\toc{目    录}`生成标题为`目    录`的目录
 
 下面这里通过`\newSection`命令来生成一个Word中的分节符。在Word中，只有通过分节之后，才能给不同的节设定不同的页眉页脚以及纸张大小等参数。分节符的作用域为其前方的内容，这里的参数`UpperRoman`表示页码采用“大写罗马数字”表示，也就是从文档最开始的摘要到目录的部分，页码采用大写罗马数字表示。👇
 
-\newSection{UpperRoman}
+\newSection{TOC}
 
 # 功能介绍
 
