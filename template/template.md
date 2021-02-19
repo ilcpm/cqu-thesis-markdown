@@ -76,7 +76,7 @@ I have a dream today!
 
 更多级别的标题在模版中未调整样式，请勿使用
 
-根据需求，“摘要”“参考文献”“附录”等样式虽为一级标题，但是并没有编号，可以通过在标题尾部加上`{-}`来取消编号。考虑到实际情况，模版里只实现了对一级标题和二级标题的支持。
+根据需求，“摘要”“参考文献”“附录”等样式虽为一级标题，但是并没有编号，可以通过在标题尾部加上`{-}`来取消编号。
 
 ## 脚注
 
@@ -184,6 +184,23 @@ $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 第三个公式后的`{#eq1}`表示对公式打上名为`eq1`的标记，就可以进行交叉引用了，使用`[@eq1]`见公式[@eq1]完成对该编号的引用
 
 如果要在公式后面输入`{#a}`这样的文字，可以先用空的花括号`{}`隔开，$$x=y_0$${} {#a}像这样
+
+$$ 
+\frac{\partial\lambda}{\partial n}=
+\frac{
+  \frac{\lambda}{\Delta n^m_{eff}}
+  \frac{\partial\Delta n^m_{eff}}{\partial n}
+}
+{1-
+  \frac{\lambda}{\Delta n^m_{eff}}
+  \frac{\partial\Delta n^m_{eff}}{\partial\lambda}
+}
+=\lambda\frac{1}{\Gamma}
+\left(
+  \frac{1}{\Delta n^m_{eff}}
+  \frac{\partial\Delta n^m_{eff}}{\partial n}
+\right)
+$$
 
 # 图片
 

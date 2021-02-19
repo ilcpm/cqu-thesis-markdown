@@ -2,3 +2,4 @@
 ~$*.doc
 /template/reference/
 /template/template/
+__pycache__/
