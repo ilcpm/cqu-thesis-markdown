@@ -36,6 +36,8 @@ pandoc example.md  --filter equations_no.py --filter header_convert.py --filter 
 - `Appendix Heading 2`: 附录二级标题
 - `Appendix Heading 3`: 附录三级标题
 
+TODO
+
 <!-- - `Unnumbered Heading 1`: 无编号的一级标题
 - `Unnumbered Heading 2`: 无编号的二级标题 -->
 
@@ -57,6 +59,8 @@ pandoc example.md  --filter equations_no.py --filter header_convert.py --filter 
 - `\Caption2{fig}`：插入双语题注的第二题注时，用该命令产生第二语言的编号前缀，例如中英题注中，默认会生成中文的题注编号`图1.3`，而英文题注的编号则须用该命令产生`Fig 1.3`
   - 实现原理：预设第二题注的前缀，插入域代码生成编号
 - `\Reference{}`：在当前位置插入参考文献，因为排版要求规定`附录`在`参考文献`之后，而pandoc默认参考文献插入在文档最后，所以需要定义命令以在任意位置插入参考文献
+- `\Style{name}`：对当前段落应用`name`样式（特殊的内置样式名称可能不一样）
+  - 通过插入ooxml代码实现
 - `[被标记文本]{#书签名字}`：可以对`被标记文本`标记一个名为`书签名字`的书签，通过书签和域代码配合，可以实现交叉引用。该功能为pandoc自带功能
 - `## 123{#xxx}`：可对标题进行标记书签，通过`[@sec-xxx-no]`可以引用标题的编号
 
@@ -142,6 +146,7 @@ TODO:
   - 对无题注的图片套用`Figure`样式
 - 2021.03.06
   - 修改`Key Word`样式的使用逻辑
+  - [X] 实现了对段落的自定义样式
 
 ## 模版TODO
 
@@ -172,7 +177,7 @@ TODO:
 ## 代码TODO
 
 - [ ] ★对LaTeX语法花括号中内容的嵌套解析
-- [ ] 自定义样式
+- [ ] 文本的自定义样式（该如何设计语法？）
 - [ ] 引用嵌套怎么办`[@page-[@xxx]]`
 - [ ] 域代码实现`` `qwe`{=field}``
 - [ ] 公式保留tex代码（不渲染）
@@ -181,7 +186,7 @@ TODO:
   - 考虑采用`\KeyWord{}xxx`这样的形式生成内容（2021.01.25）
   - 经研究发现，这样做会导致单独的`RawBlock`变成`RawInline`，就无法插入段落在其中了
   - 能否直接利用子元素获取到父元素然后在前面插入段落？
-- [ ] 下划线
+- [ ] 下划线，`pf.Underline()`
 - [ ] 项目API设计，代码重构
 - [ ] 拆分项目的更新日志到另一仓库
 
