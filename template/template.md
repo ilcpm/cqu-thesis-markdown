@@ -20,7 +20,9 @@ nocite: /
 
 该文档中的格式，均是来自《重庆大学博士、硕士学位论文撰写格式标准及要求（2019年修订）》、《重庆大学普通本科毕业设计（论文）撰写规范要求》，具体见后文
 
-\KeyWord{排版，论文，格式转换}
+\newPara{}
+
+\KeyWord{关键词：}排版，论文，格式转换
 
 # **Abstract**{-}
 
@@ -44,7 +46,9 @@ I have a dream that one day, down in Alabama, with its vicious racists, with its
 
 I have a dream today!
 
-\KeyWord2{pandoc, Markdown, Word}
+\newPara{}
+
+\KeyWord{Keywords: }pandoc, Markdown, Word
 
 \newSection{Abstract}
 
