@@ -380,6 +380,65 @@ for k in List:  # 将list打印输出，五个一换行
 > \tabC{}Our strange duet   
 > \tabC{}♪ 同唱这奇妙的旋律
 
+# 技术性内容
+
+## tex 命令内的 markdown 文本解析
+
+
+### 行间内容示例
+
+\newcommand\test{abc}
+
+\parse{$\frac{\test}{b}$}
+
+$\frac{\test}{b}$
+
+行内公式：\parse{分数 $\frac{\test}{c}$}
+
+行内公式：分数 $\frac{\test}{c}$
+
+``` markdown
+\newcommand\test{abc}
+
+\parse{$\frac{\test}{b}$}
+
+$\frac{\test}{b}$
+
+行内公式：\parse{分数 $\frac{\test}{c}$}
+
+行内公式：分数 $\frac{\test}{c}$
+```
+
+### 块内容示例
+
+\parse{$$\frac{\test}{d}$$}
+
+$$\frac{\test}{d}$$
+
+``` markdown
+\parse{$$\frac{\test}{d}$$}
+
+$$\frac{\test}{d}$$
+```
+
+$$\frac{\test}{d}$$
+
+$$\frac{\test}{d}$$
+
+``` markdown
+$$\frac{\test}{d}$$
+
+$$\frac{\test}{d}$$
+```
+
+### 嵌套示例
+
+\parse{公式 \test: \parse{$\test$}}
+
+``` markdown
+\parse{公式 \test: \parse{$\test$}}
+```
+
 # 参考文献的插入
 
 参考文献的插入和LaTeX类似，通过一个`.bib`文件来实现，该文件可通过任意文献管理软件导出，为纯文本格式，通过`[@xxx]`这样的语法来进行引用。
