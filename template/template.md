@@ -97,13 +97,25 @@ I have a dream today!
 
 ## 这是一个没有编号的二级标题{-}
 
-## 标题的交叉引用{#jcyy}
+# 交叉引用{#jcyy}
 
-测试标题的交叉引用：[@sec-jcyy-no]
+TODO
 
-页码：[@page-jcyy]
+## 标题引用
+
+测试标题的交叉引用
+
+标题编号：[@sec-jcyy-no]
+
+标题页码：[@page-jcyy]
 
 标题文本：[@sec-jcyy]
+
+## 书签
+
+书签：[被引用的文字]{#test_ref}、[test_ref]{#test_ref_ref}、[test_ref_ref]{#test_ref_ref_ref}
+
+Ref域：`{Ref test_ref|Ref域}`{=field}、`{Ref {Ref test_ref_ref|wtf}|嵌套Ref域}`{=field}、`{Ref {Ref {Ref test_ref_ref_ref}|嵌套Ref域}|套娃}`{=field}
 
 # 其他自定义功能
 
