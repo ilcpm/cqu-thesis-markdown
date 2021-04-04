@@ -50,15 +50,15 @@ I have a dream today!
 
 \KeyWord{Keywords: }pandoc, Markdown, Word
 
-\newSection{Abstract}
+\newSectionAbstract
 
-\toc{目    录}
+\toc
 
-👆上面通过`\toc{目    录}`生成标题为`目    录`的目录
+👆上面通过`\toc`生成目录
 
 下面这里通过`\newSection`命令来生成一个Word中的分节符。在Word中，只有通过分节之后，才能给不同的节设定不同的页眉页脚以及纸张大小等参数。分节符的作用域为其前方的内容，这里的参数`UpperRoman`表示页码采用“大写罗马数字”表示，也就是从文档最开始的摘要到目录的部分，页码采用大写罗马数字表示。👇
 
-\newSection{TOC}
+\newSectionTOC
 
 # 功能介绍
 
