@@ -209,7 +209,7 @@ $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 
 如果要在公式后面输入`{#a}`这样的文字，可以先用空的花括号`{}`隔开，$$x=y_0$${} {#a}像这样
 
-$$ 
+$$
 \frac{\partial\lambda}{\partial n}=
 \frac{
   \frac{\lambda}{\Delta n^m_{eff}}

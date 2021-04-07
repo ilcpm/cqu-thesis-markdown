@@ -8,6 +8,7 @@ pandoc.exe `
     -o $out `
     --filter docx_filters `
     --citeproc `
+    --metadata link-citations=true `
     --reference-doc .\reference.docx
     # --filter ..\section_break.py `
     # --toc `
