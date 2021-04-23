@@ -58,6 +58,10 @@ I have a dream today!
 
 👆上面通过`\toc`生成目录
 
+\Style{TOC}图目录
+
+`{ TOC \h \z \c "Figure"}`{=field}
+
 下面这里通过`\newSection`命令来生成一个Word中的分节符。在Word中，只有通过分节之后，才能给不同的节设定不同的页眉页脚以及纸张大小等参数。分节符的作用域为其前方的内容，这里的参数`UpperRoman`表示页码采用“大写罗马数字”表示，也就是从文档最开始的摘要到目录的部分，页码采用大写罗马数字表示。👇
 
 \newSectionTOC
