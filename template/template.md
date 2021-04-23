@@ -120,6 +120,30 @@ Ref域：`{Ref test_ref|Ref域}`{=field}、`{Ref {Ref test_ref_ref|wtf}|嵌套Re
 
 # 其他自定义功能
 
+## 下划线
+
+代码：
+
+```markdown
+[下划线1]{.underline}，[下划线2]{.U}
+```
+
+效果：
+
+[下划线1]{.underline}，[下划线2]{.U}
+
+## 自定义文本样式
+
+代码：
+
+```markdown
+普通文本，[自定义样式文本1]{custom-style="CommentTok"},[自定义样式文本2]{style="CommentTok"}
+```
+
+效果：
+
+普通文本，[自定义样式文本1]{custom-style="CommentTok"},[自定义样式文本2]{style="CommentTok"}
+
 ## 制表符
 
 制表符可以用来对齐文字，在Word中，有普通的制表符（按`Tab`键插入）和特殊的制表符（需要通过菜单插入）。
@@ -191,11 +215,9 @@ pandoc无法将多余的空行识别为空的段落产生一段垂直间距（�
 
 # 公式
 
-勾股定理：设$\triangle ABC$顶点$A$，$B$，$C$的对边分别为 $a$，$b$，$c$，若成立 $$a^2+b^2=c^2$$ 则 $\triangle ABC$是直角三角形，且
-
 \newcommand\degree{°}
 
-$$ \angle ACB=90 \degree$$
+勾股定理：设$\triangle ABC$顶点$A$，$B$，$C$的对边分别为 $a$，$b$，$c$，若成立 $$a^2+b^2=c^2$$ 则 $\triangle ABC$是直角三角形，且 $$ \angle ACB=90 \degree.$$
 
 通过预定义的开关开启公式编号功能之后，“显示公式”默认会被编号，实现原理是用一个三列的表格嵌套公式，中间放置公式，右边放置编号，由于该表格的对称性，公式被对齐在正中间。这里可以简单的用一用LaTeX的`\newcommand`命令，由pandoc提供原生支持。
 
