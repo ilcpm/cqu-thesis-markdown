@@ -6,7 +6,7 @@ pandoc.exe `
     head.md `
     $in `
     -o $out `
-    --filter docx_filters `
+    --filter pandoc_word_helper `
     --citeproc `
     --metadata link-citations=true `
     --reference-doc .\reference.docx

@@ -3,8 +3,8 @@ bibliography: [1.bib]
 csl: china-national-standard-gb-t-7714-2015-numeric.csl
 nocite: /
     @*
-pandoc_args: ['-F', 'docx_filters', '-F', 'pandoc_header_encoder.py','--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）请勿去掉该行！
+pandoc_args: ['-F', 'pandoc_word_helper', '-F', 'pandoc_header_encoder.py','--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
 ---
 <!-- 👆上面这里是pandoc的配置参数，这4行的作用是引入参考文献和参考文献的样式 -->
 
