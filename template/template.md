@@ -4,6 +4,7 @@ csl: china-national-standard-gb-t-7714-2015-numeric.csl
 nocite: /
     @*
 pandoc_args: ['-F', 'pandoc_word_helper', '-F', 'pandoc_header_encoder.py','--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
+type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）
 ---
 <!-- 👆上面这里是pandoc的配置参数，这4行的作用是引入参考文献和参考文献的样式 -->
 
@@ -56,6 +57,10 @@ I have a dream today!
 \toc
 
 👆上面通过`\toc`生成目录
+
+\Style{TOC}图目录
+
+`{ TOC \h \z \c "Figure"}`{=field}
 
 下面这里通过`\newSection`命令来生成一个Word中的分节符。在Word中，只有通过分节之后，才能给不同的节设定不同的页眉页脚以及纸张大小等参数。分节符的作用域为其前方的内容，这里的参数`UpperRoman`表示页码采用“大写罗马数字”表示，也就是从文档最开始的摘要到目录的部分，页码采用大写罗马数字表示。👇
 
@@ -161,17 +166,13 @@ Ref引用：`{Ref test_ref}`{=field}、`{Ref {Ref test_ref_ref|wtf}|嵌套Ref域
 
 # 其他自定义功能
 
-## 下划线
+## 自定义段落样式
 
-代码：
+使用`\Style{Figure}`可对当前段落应用名为`Figure`的样式。👇
 
-```markdown
-[下划线1]{.underline}，[下划线2]{.U}
-```
+\Style{Figure}这个段落被应用了`Figure`样式，显示效果为段落居中显示
 
-效果：
-
-[下划线1]{.underline}，[下划线2]{.U}
+定理，引理等环境可借助该功能实现。
 
 ## 自定义文本样式
 
@@ -184,6 +185,18 @@ Ref引用：`{Ref test_ref}`{=field}、`{Ref {Ref test_ref_ref|wtf}|嵌套Ref域
 效果：
 
 普通文本，[自定义样式文本1]{custom-style="CommentTok"},[自定义样式文本2]{style="CommentTok"}
+
+## 下划线
+
+代码：
+
+```markdown
+[下划线1]{.underline}，[下划线2]{.U}
+```
+
+效果：
+
+[下划线1]{.underline}，[下划线2]{.U}
 
 ## 制表符
 
@@ -231,26 +244,17 @@ pandoc无法将多余的空行识别为空的段落产生一段垂直间距（�
 
 👆这里就有了3个空段落。排版规范要求“摘要”部分的“关键词”与正文间隔一行，内部就是用的这个逻辑来实现。
 
-## 自定义段落样式
-
-使用`\Style{Figure}`可对当前段落应用名为`Figure`的样式。👇
-
-\Style{Figure}这个段落被应用了`Figure`样式，显示效果为段落居中显示
-
-定理，引理等环境可借助该功能实现。
-
 ## 尚未实现的功能{-}
 
 1. LaTeX中的“引理”“定理”“证明”等环境，可通过自定义段落样式实现
-2. 对指定文本套用自定义样式
-3. 图片的并排子图
+2. 图片的并排子图
    * 这个功能得用表格进行嵌套，理解起来很简单，做是能做的
    * 就是逻辑比较复杂，代码写起来应该会很酸爽
-4. 附录的公式表格编号
+3. 附录的公式表格编号
    1. 排版要求规定一级标题“附录”不编号，附录里面的二级标题以`ABCD`编号
    2. 而附录里的图片和表格等用`图A1`的形式编号
    3. 实现起来虽然不复杂，但是要考虑到和普通的题注编号的共存，所以判断逻辑较为复杂
-5. 图目录，表目录，符号表
+4. 图目录，表目录，符号表
 
 # 公式
 
