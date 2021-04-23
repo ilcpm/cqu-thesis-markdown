@@ -4,11 +4,11 @@ csl: china-national-standard-gb-t-7714-2015-numeric.csl
 nocite: /
     @*
 pandoc_args: ['-F', 'docx_filters', '-F', 'pandoc_header_encoder.py','--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
-type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）
+type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）请勿去掉该行！
 ---
 <!-- 👆上面这里是pandoc的配置参数，这4行的作用是引入参考文献和参考文献的样式 -->
 
-# 摘要{-}
+# 摘\Space{4}要{-}
 
 对于论文排版而言，学界通常会采用LaTeX方案，LaTeX虽然有着种种优点，然而却并不是那么容易上手，很多时候我们也不得不提交Word格式的论文。Word虽然上手简单，可要排版出一篇格式工整的论文也并非那么容易。
 
