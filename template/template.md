@@ -3,7 +3,7 @@ bibliography: [1.bib]
 csl: china-national-standard-gb-t-7714-2015-numeric.csl
 nocite: /
     @*
-pandoc_args: ['-F', 'docx_filters', '-F', 'pandoc_header_encoder.py','--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
+pandoc_args: ['-F', 'pandoc_word_helper', '-F', 'pandoc_header_encoder.py','--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
 ---
 <!-- 👆上面这里是pandoc的配置参数，这4行的作用是引入参考文献和参考文献的样式 -->
 
