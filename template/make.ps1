@@ -10,7 +10,5 @@ pandoc.exe `
     --citeproc `
     --metadata link-citations=true `
     --reference-doc .\reference.docx
-    # --filter ..\section_break.py `
-    # --toc `
 
 start $out
