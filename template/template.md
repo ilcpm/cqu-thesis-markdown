@@ -5,7 +5,7 @@ nocite: /
     @*
 pandoc_args: ['-F', 'pandoc-crossref', '--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）请勿去掉该行！
-singlePage: false
+singlePage: 0 # 是否单面打印，1单面，0双面
 
 # 标记题注时的参数
 chapters: true # 编号chapter.item
@@ -614,6 +614,66 @@ pandoc默认参考文献会生成在文档的最后方，但根据论文规范�
 附录B中的内容
 
 由于附录的字号比正文小，所以这里测试一下在正文中的内联代码字号是否正常👉`内联代码code code`👈可见内联代码的字号并未跟随改变，和前文（见[@内联代码字号问题-page]页）中提到的脚注中的代码一样。
+
+## C 单双面打印的页眉域代码{-}
+
+* 摘要和正文
+  * 单面打印：左边为`type`文本，右边为一级标题
+  * 双面打印：奇数页居中为一级标题，偶数页居中为`type`文本
+* 目录
+  * 单面打印：左边为`type`文本，右边为`TOC Heading`样式
+  * 双面打印：奇数页居中为一级标题，偶数页居中为`type`文本
+
+不管是单面打印还是双面打印，这里都得设置页眉页脚为“奇偶页不同”，然后用域代码判断是否为单面打印，最后用域代码分左中右3个部分用特殊的制表符分隔跳转。
+
+这里用类python的代码格式先描述域代码，方便后续照着修改查证
+
+```python
+# 奇数页面
+if singlePage=="1":
+    "type
+    \tabR{}
+    一级标题域代码"
+else:
+    "\tabC{}
+    一级标题域代码"
+
+# 偶数页面
+if singlePage=="1":
+    "type
+    \tabR{}
+    一级标题域代码"
+else:
+    "\tabC{}
+    type"
+```
+
+若在目录部分，将“一级标题域代码”换成目录的域代码即可
+
+其中，
+
+* `singlePage`域代码为`{DOCPROPERTY  singlePage  \* MERGEFORMAT}`
+* `type`域代码为`{DOCPROPERTY  type  \* MERGEFORMAT}`
+* 一级标题域代码分为标题编号域代码和标题域代码，而标题编号域代码又需要先判断标题编号是否存在（和数字0比较）
+  * 标题编号域代码为`{IF { STYLEREF  "标题 1" \n  \* MERGEFORMAT } > 0 {STYLEREF  "标题 1" \n  \* MERGEFORMAT} }`
+  * 标题域代码为`{STYLEREF  "标题 1"  \* MERGEFORMAT}`
+* 目录的域代码为`{STYLEREF  "TOC 标题"  \* MERGEFORMAT}`
+
+故连起来之后，最终域代码为
+
+* 摘要和正文奇数页面
+
+    ```text
+    {IF {DOCPROPERTY  singlePage  \* MERGEFORMAT}="1" "{DOCPROPERTY  type  \* MERGEFORMAT}\tabR{}{IF { STYLEREF  "标题 1" \n  \* MERGEFORMAT } > 0 {STYLEREF  "标题 1" \n  \* MERGEFORMAT} }{STYLEREF  "标题 1"  \* MERGEFORMAT}" "\tabC{}{IF { STYLEREF  "标题 1" \n  \* MERGEFORMAT } > 0 {STYLEREF  "标题 1" \n  \* MERGEFORMAT} }{STYLEREF  "标题 1"  \* MERGEFORMAT}"}
+    ```
+
+* 摘要和正文偶数页面
+
+    ```text
+    {IF {DOCPROPERTY  singlePage  \* MERGEFORMAT}="1" "{DOCPROPERTY  type  \* MERGEFORMAT}\tabR{}{IF { STYLEREF  "标题 1" \n  \* MERGEFORMAT } > 0 {STYLEREF  "标题 1" \n  \* MERGEFORMAT} }{STYLEREF  "标题 1"  \* MERGEFORMAT}" "\tabC{}{DOCPROPERTY  type  \* MERGEFORMAT}"}
+    ```
+
+注意其中的`\tabC{}`和`\tabR{}`不是域代码而是在域代码中手动插入的特殊制表符
 
 ---
 
