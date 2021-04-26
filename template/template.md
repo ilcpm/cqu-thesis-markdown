@@ -3,7 +3,7 @@ bibliography: [1.bib]
 csl: china-national-standard-gb-t-7714-2015-numeric.csl
 nocite: /
     @*
-pandoc_args: ['-F', 'pandoc-crossref', '--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
+pandoc_args: ['-F', 'pandoc-crossref', '-F', 'pandoc_word_helper', '--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）请勿去掉该行！
 singlePage: 0 # 是否单面打印，1单面，0双面
 
@@ -11,7 +11,7 @@ singlePage: 0 # 是否单面打印，1单面，0双面
 chapters: true # 编号chapter.item
 chaptersDepth: 1 # 标题编号深度，默认只有一级标题编号
 autoEqnLabels: true # 自动公式编号
-tableEqns: true # 用表格编号公式，在预览时有效
+tableEqns: false # 用表格编号公式，在预览时有效
 figureTitle: "图片 "
 figureTitle2: "Figure "
 tableTitle: Table
@@ -529,7 +529,7 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 
 ## 单双页眉切换
 
-编辑Markdown的metadata项目`singlePage`，根据模版中域代码的设定（详见附录[@sec:页眉]），当`singlePage`为1时表示单面打印，遵循排版要求中的单面规则，当`singlePage`不为1时（建议设置为0），表示双面打印，遵循排版要求中的双面规则。
+编辑Markdown的metadata项目`singlePage`，根据模版中域代码的设定（详见附录[@sec:页眉-c]），当`singlePage`为1时表示单面打印，遵循排版要求中的单面规则，当`singlePage`不为1时（建议设置为0），表示双面打印，遵循排版要求中的双面规则。
 
 亦可在导出的Word中手动设置Word的自定义属性页面看见此设置，如图
 
@@ -631,7 +631,7 @@ pandoc默认参考文献会生成在文档的最后方，但根据论文规范�
 
 由于附录的字号比正文小，所以这里测试一下在正文中的内联代码字号是否正常👉`内联代码code code`👈可见内联代码的字号并未跟随改变，和前文（见[@内联代码字号问题-page]页）中提到的脚注中的代码一样。
 
-## [C 单双面打印的页眉域代码]{-, #sec:页眉}
+## [C 单双面打印的页眉域代码]{#sec:页眉 -}
 
 * 摘要和正文
   * 单面打印：左边为`type`文本，右边为一级标题
