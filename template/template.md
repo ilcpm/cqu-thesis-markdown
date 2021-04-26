@@ -3,7 +3,7 @@ bibliography: [1.bib]
 csl: china-national-standard-gb-t-7714-2015-numeric.csl
 nocite: /
     @*
-pandoc_args: ['-F', 'pandoc-crossref', '-F', 'pandoc_word_helper', '--citeproc','head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
+# pandoc_args: ['head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）请勿去掉该行！
 singlePage: 0 # 是否单面打印，1单面，0双面
 
@@ -308,6 +308,18 @@ pandoc无法将多余的空行识别为空的段落产生一段垂直间距（�
    1. 排版要求规定一级标题“附录”不编号，附录里面的二级标题以`ABCD`编号
    2. 而附录里的图片和表格等用`图A1`的形式编号
    3. 实现起来虽然不复杂，但是要考虑到和普通的题注编号的共存，所以判断逻辑较为复杂
+
+## 目前存在的部分问题
+
+* 文档网格无法与Word相同
+  * 问题来自`styles.xml`，有待解决
+* pandoc的兼容性问题
+  * 输出文档的空格距离比Word小
+  * 换行符会导致奇怪的对齐
+  * 这两个问题都是因为pandoc默认文档的全局参数设置问题，只能等待pandoc选择继承模版的全局参数时才可以做到
+  * 可通过如图操作修复：
+  * ![](兼容性问题.png)
+  * 在Word的设置中，选择“高级”-->最下方“以下对象的布局选项”-->勾上“不扩展XXX”和“区分半角全角字符”即可解决
 
 # 公式
 
