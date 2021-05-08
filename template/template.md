@@ -360,6 +360,30 @@ $$
 
 TODO
 
+# 定理环境
+
+## 语法定义
+
+```markdown
+[极限的$\epsilon-\delta$定义]{.definition #bm}
+: 第一段
+: 第二段
+```
+
+效果
+
+```markdown
+[定义[`{STYLEREF 1 \s}`{=field}.`{SEQ def \* ARABIC \s 1}`{=field}]{#bm} ([极限的$\epsilon-\delta$定义]{#bm-c})]{style="Definition Term"}\Style{Definition}第一段
+
+\Style{Definition}第二段
+```
+
+定义1.3.2 (极限的$\epsilon-\delta$定义)第一段
+
+第二段
+
+其中`定义`二字为Markdown的metadata的`proof`参数，数字`1.3`中的分隔符来自`chapDelim`参数
+
 ## 公式纯文本保留
 
 TODO
@@ -633,17 +657,17 @@ pandoc默认参考文献会生成在文档的最后方，但根据论文规范�
 
 学校要求附录的字号为五号，因此这里需要通过在标题尾部写上`{.appendix}`来让插件识别并处理。
 
-## A{-}
+## \Style{ApendixLevel2}附录1
 
 这是附录A中的内容，对附录中图片和公式的编号处理目前尚未完成。
 
-## B{-}
+## \Style{ApendixLevel2}附录2
 
 附录B中的内容
 
 由于附录的字号比正文小，所以这里测试一下在正文中的内联代码字号是否正常👉`内联代码code code`👈可见内联代码的字号并未跟随改变，和前文（见[@内联代码字号问题-page]页）中提到的脚注中的代码一样。
 
-## [C 单双面打印的页眉域代码]{#sec:页眉 -}
+## [\Style{ApendixLevel2}单双面打印的页眉域代码]{#sec:页眉 -}
 
 * 摘要和正文
   * 单面打印：左边为`type`文本，右边为一级标题
