@@ -5,7 +5,7 @@ nocite: /
     @*
 # pandoc_args: ['head.md','-f','markdown+raw_tex+tex_math_single_backslash+latex_macros+header_attributes','-']
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）请勿去掉该行！
-singlePage: 0 # 是否单面打印，1单面，0双面
+singlePage: 1 # 是否单面打印，1单面，0双面
 
 # 标记题注时的参数
 chapters: true # 编号chapter.item
@@ -78,7 +78,7 @@ I have a dream today!
 
 \Style{TOC}图目录
 
-`{ TOC \h \z \c "图片"}`{=field}
+`{ TOC \h \z \c "{DOCPROPERTY figureTitle}"}`{=field}
 
 下面这里通过`\newSection`命令来生成一个Word中的分节符。在Word中，只有通过分节之后，才能给不同的节设定不同的页眉页脚以及纸张大小等参数。分节符的作用域为其前方的内容，这里的参数`UpperRoman`表示页码采用“大写罗马数字”表示，也就是从文档最开始的摘要到目录的部分，页码采用大写罗马数字表示。👇
 
@@ -88,19 +88,17 @@ I have a dream today!
 
 这里开始介绍基本功能的使用。
 
-## 标题
+## 标题 English
 
 这里是各级标题，根据论文排版要求，本科论文理科规定了6级标题样式的编号和格式，文科则规定了5级，且编号格式与理科不同；而根据研究生的要求，文理科都只能按照本科理科的样子编号。其中英文标题要求应用加粗效果。
 
-## **English in title should be Bold**
+### 三级标题Level Three 3
 
-### 三级标题**Level Three 3**
+#### 四级标题Level Four 4
 
-#### 四级标题**Level Four 4**
+##### 五级标题Level Five 5
 
-##### 五级标题**Level Five 5**
-
-###### 六级标题**Level Five 6**
+###### 六级标题Level Five 6
 
 更多级别的标题在模版中未调整样式，请勿使用
 
@@ -360,6 +358,10 @@ $$
 
 TODO
 
+## 公式纯文本保留
+
+TODO
+
 # 定理环境
 
 ## 语法定义
@@ -383,10 +385,6 @@ TODO
 第二段
 
 其中`定义`二字为Markdown的metadata的`proof`参数，数字`1.3`中的分隔符来自`chapDelim`参数
-
-## 公式纯文本保留
-
-TODO
 
 # 图片
 
