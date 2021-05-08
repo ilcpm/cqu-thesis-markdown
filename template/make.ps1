@@ -1,6 +1,8 @@
 $target = "template"
 $in = $target + ".md"
 $out = $target + ".docx"
+$isOpenDocxAfterComplete = 1
+
 
 pandoc.exe `
     head.md `
@@ -11,4 +13,6 @@ pandoc.exe `
     --metadata link-citations=true `
     --reference-doc .\reference.docx
 
-start $out
+if ($isOpenDocxAfterComplete) {
+    Start-Process $out
+}

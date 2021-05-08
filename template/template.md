@@ -7,6 +7,8 @@ nocite: /
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业或改为空去掉（方便不写毕业论文的时候其他作业使用）请勿去掉该行！
 singlePage: 1 # 是否单面打印，1单面，0双面
 
+codeBlockNumbering: true # 对标题编号
+
 # 标记题注时的参数
 chapters: true # 编号chapter.item
 chaptersDepth: 1 # 标题编号深度，默认只有一级标题编号
