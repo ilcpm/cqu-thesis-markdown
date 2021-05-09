@@ -8,6 +8,7 @@ type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接
 singlePage: 1 # 是否单面打印，1单面，0双面
 
 codeBlockNumbering: true # 对标题编号
+codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（需要字体支持，否则可能导致字符宽度不一，效果极差）
 
 # 标记题注时的参数
 chapters: true # 编号chapter.item
