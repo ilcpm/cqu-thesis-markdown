@@ -370,24 +370,35 @@ TODO
 ## 语法定义
 
 ```markdown
-[极限的$\epsilon-\delta$定义]{.definition #bm}
+[极限的$\varepsilon-\delta$定义]{.definition #def:limit}
 : 第一段
 : 第二段
 ```
 
-效果
+```markdown
+[]{.definition}[@Perner-171]
+: 这是一个没有名字但是有参考文献引用的定义
+```
+
+通过最基本的元素可以这样实现：
 
 ```markdown
-[定义[`{STYLEREF 1 \s}`{=field}.`{SEQ def \* ARABIC \s 1}`{=field}]{#bm} ([极限的$\epsilon-\delta$定义]{#bm-c})]{style="Definition Term"}\Style{Definition}第一段
+\Style{Definition}[定义[`{STYLEREF 1 \s}`{=field}.`{SEQ def \* ARABIC \s 1}`{=field}]{#def:limit}]{style="Definition Preffix"} [([极限的$\varepsilon-\delta$定义]{#def:limit-c}[@Philip-159])]{style="Definition Title"}　第一段
 
 \Style{Definition}第二段
 ```
 
-定义1.3.2 (极限的$\epsilon-\delta$定义)第一段
+定义1.3 (极限的$\varepsilon-\delta$定义)第一段
 
 第二段
 
 其中`定义`二字为Markdown的metadata的`proof`参数，数字`1.3`中的分隔符来自`chapDelim`参数
+
+\Style{Definition}[定义[`{STYLEREF 1 \s}`{=field}.`{SEQ def \* ARABIC \s 1}`{=field}]{#def:limit}]{style="Definition Preffix"} [([极限的$\varepsilon-\delta$定义]{#def:limit-c}[@Philip-159])]{style="Definition Title"}　设$\left\{x_{n}\right\}$是一给定数列，$a$是一个实常数。如果对于任意给定的$\varepsilon>0$，可以找到正整数$N$，使得当$n>N$时，成立$$\left|x_{n}-a\right|<\varepsilon$$则称数列$\left\{x_{n}\right\}$收敘于$a$（或$a$是数列$\left\{x_{n}\right\}$的极限），记为$$\lim _{n \rightarrow \infty} x_{n}=a，$$有时也记为$$x_{n} \rightarrow a(n \rightarrow \infty)$$
+
+\Style{Definition}如果不存在实数$a$，使$\left\{x_{n}\right\}$收敘于$a$，则称数列$\left\{x_{n}\right\}$发散。
+
+定义编号：[@def:limit]，定理名称：[@def:limit-c]，定理页码：[@def:limit-page]
 
 # 图片
 
@@ -658,17 +669,17 @@ pandoc默认参考文献会生成在文档的最后方，但根据论文规范�
 
 学校要求附录的字号为五号，因此这里需要通过在标题尾部写上`{.appendix}`来让插件识别并处理。
 
-## \Style{ApendixLevel2}附录1
+## \Style{AppendixHeading2}附录1
 
 这是附录A中的内容，对附录中图片和公式的编号处理目前尚未完成。
 
-## \Style{ApendixLevel2}附录2
+## \Style{AppendixHeading2}附录2
 
 附录B中的内容
 
 由于附录的字号比正文小，所以这里测试一下在正文中的内联代码字号是否正常👉`内联代码code code`👈可见内联代码的字号并未跟随改变，和前文（见[@内联代码字号问题-page]页）中提到的脚注中的代码一样。
 
-## [\Style{ApendixLevel2}单双面打印的页眉域代码]{#sec:页眉 -}
+## [\Style{AppendixHeading2}单双面打印的页眉域代码]{#sec:页眉 -}
 
 * 摘要和正文
   * 单面打印：左边为`type`文本，右边为一级标题
