@@ -34,6 +34,16 @@ secPrefix: 节
 
 autoEqnLabels: true # 自动编号公式
 tableEqns: false # 用表格编号公式，在预览时有效
+
+test-metadata-block: |
+  *这*是一个 `metadata block`。Metadata 分为
+  
+  - metadata inline
+  - metadata block
+
+
+test-metadata-inline: '*这*是一个 `metadata inline`'
+
 ---
 
 # 摘\Space{4}要{-}
@@ -217,6 +227,16 @@ pandoc无法将多余的空行识别为空的段落产生一段垂直间距（�
 在Markdown中，连续多个空格会被视为一个，使用`\Space{4}`来生成4个连续空格，例如中文摘要中的`摘\Space{4}要`
 
 摘\Space{4}要
+
+## 调用 metadata
+
+Metadata block:
+
+\metadata{test-metadata-block}
+
+Metadata inline: \metadata{test-metadata-inline}
+
+纯文本 Metadata: \metadataStr{test-metadata-inline}
 
 ## 尚未实现的功能{-}
 
