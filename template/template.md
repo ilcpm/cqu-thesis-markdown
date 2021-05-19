@@ -20,11 +20,11 @@ codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（
 chapters: true # 是否自动编号图片表格
 chaptersDepth: 1 # 标题编号深度，默认只有一级标题的编号
 chapDelim: '.' # 编号chapter.item中间的“点”
-figureTitle: "图片 "
+figureTitle: "图 "
 figureTitle2: "Figure "
 tableTitle: "表 "
 tableTitle2: "Table "
-titleDelim: ':' # 题注编号和题注文本直接的分隔符
+titleDelim: ' ' # 题注编号和题注文本直接的分隔符
 
 # 引用编号时的参数
 figPrefix: 图
@@ -393,7 +393,7 @@ TODO 这里的代码尚未实现，可以先不看
 | 数字   |   1231   |    4654 |
 | 空     |   sum    |       - |
 
-: 这里是表头\Caption2{fig}English Table Title
+: 这里是表头\Caption2{tbl}English Table Title
 
 显而易见，这个表格不能有高级操作，不能合并表格（其实pandoc是支持的，但是无法输出到Word，Markdown也没有对应的语法）
 
