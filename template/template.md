@@ -98,7 +98,7 @@ I have a dream today!
 
 \Style{TOC}图目录
 
-`{ TOC \h \z \c "{DOCPROPERTY figureTitle}"}`{=field}
+`{ TOC \h \z \c "{DOCPROPERTY figureTitle}" \x}`{=field}
 
 下面这里通过`\newSection`命令来生成一个Word中的分节符。在Word中，只有通过分节之后，才能给不同的节设定不同的页眉页脚以及纸张大小等参数。分节符的作用域为其前方的内容，这里的参数`UpperRoman`表示页码采用“大写罗马数字”表示，也就是从文档最开始的摘要到目录的部分，页码采用大写罗马数字表示。👇
 
@@ -143,11 +143,15 @@ I have a dream today!
 
 ## 自定义段落样式
 
-**警告**：这里语法需要修改，勿看
+:::{style="Figure"}
+`\Style{Figure}`这个段落被应用了`Figure`样式，显示效果为段落居中显示
+:::
 
-~~使用`\Style{Figure}`可对当前段落应用名为`Figure`的样式。👇~~
+使用`\Style{Figure}`可对当前段落应用名为`Figure`的样式。👇
 
-~~`\Style{Figure}`这个段落被应用了`Figure`样式，显示效果为段落居中显示~~
+\Style{Figure}这个段落被应用了`Figure`样式，显示效果为段落居中显示
+
+不推荐使用`\Style{}`功能，该代码只有放在段首的时候才成立，且造成其他功能无法正常显示（仅限使用的地方）
 
 ## 自定义文本样式
 
@@ -417,11 +421,18 @@ TODO 这里的代码尚未实现，可以先不看
 
 在reference.docx中制定好表格样式，并将其复制到新的表格，而后即可“自由”制作表格（例如合并单元格，长表格，对齐等），使用以下域代码（`{IncludeText}`）引入即可（亦可用来引入其他任何文档），该域代码只支持绝对路径，但引入之后会把原来的文档内容保留在本文档内，也就是只要不强行更新，即使发给别人别人仍然可以正确查看。
 
-因为绝对路径的问题，这里我们做了个`\includeDoc{}`功能来使用相对路径引入文件。
+因为绝对路径的问题，这里我们做了个`\includeDoc{}`功能来使用相对路径引入文件，该功能只能单独成段使用。
 
 注意，引入的文档中的样式会使用reference.docx中的对应样式，因此无需在新的文档中修改样式内容，只需应用对应样式即可，这里推荐复制reference.docx中的`Compact`样式，在本文所用的reference.docx中，该样式没有首行缩进，是制作表格比较良好的选择，同时也是pandoc默认使用的表格样式。
 
-\includeDoc{Table.docx}
+<!-- \includeDoc{Table.docx} -->
+:::{style="Compact"}
+123
+
+`{IncludeText "D:\\CodeProject\\cqu-thesis-markdown\\template\\Table.docx"}`{=field}
+
+123
+:::
 
 # 代码和文本块引用
 
@@ -630,9 +641,9 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 
 插入域代码时，还可以指定域代码在未更新时显示的内容，使用语法`` `{域代码|显示内容}`{=field} ``即可（默认情况下，Word需要更新域代码内容才能正确显示其具体的内容，使用该语法可在未更新的情况下手动指定，而不会显示为空白）。
 
-例如，使用域代码`` `{REF jcyy|域代码还未更新}`{=field} ``可在未更新域代码的情况下显示为“域代码还未更新”，更新后将会显示上述的一级标题内容。
+例如，使用域代码`` `{REF sec:jcyy|域代码还未更新}`{=field} ``可在未更新域代码的情况下显示为“域代码还未更新”，更新后将会显示上述的一级标题内容。
 
-效果：`{REF jcyy|域代码还未更新}`{=field}
+效果：`{REF sec:jcyy|域代码还未更新}`{=field}
 
 [^field_code]: Word 中的域代码列表：[https://support.microsoft.com/zh-cn/office/word-%E4%B8%AD%E7%9A%84%E5%9F%9F%E4%BB%A3%E7%A0%81%E5%88%97%E8%A1%A8-1ad6d91a-55a7-4a8d-b535-cf7888659a51](https://support.microsoft.com/zh-cn/office/word-%E4%B8%AD%E7%9A%84%E5%9F%9F%E4%BB%A3%E7%A0%81%E5%88%97%E8%A1%A8-1ad6d91a-55a7-4a8d-b535-cf7888659a51)
 
@@ -786,6 +797,8 @@ else:
 * 目录的域代码为`{STYLEREF  "TOC 标题"  \* MERGEFORMAT}`
 
 故连起来之后，最终域代码为
+
+1231231
 
 * 摘要和正文奇数页面
 
