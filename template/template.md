@@ -9,6 +9,7 @@ singlePage: 1 # 是否单面打印，1单面，0双面，单双面的页眉不�
 
 # 下面的所有配置参数目前都还没有用，代码还没做进去，目前功能是写死的
 codeBlockNumbering: true # 对代码块添加行号
+codeBlockNumberingMinLine: 3 # 只对超过该行数的代码块编号（最小0）
 codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（需要字体支持，否则可能导致字符宽度不一，效果极差，不建议使用）
 
 # 题注相关的参数
