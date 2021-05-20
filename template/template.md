@@ -7,7 +7,6 @@ nocite: /
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业（方便不写毕业论文的时候其他作业使用）可以改为空，但不能去掉！
 singlePage: 1 # 是否单面打印，1单面，0双面，单双面的页眉不一样，通过这个参数确定
 
-# 下面的所有配置参数目前都还没有用，代码还没做进去，目前功能是写死的
 codeBlockNumbering: true # 对代码块添加行号
 codeBlockNumberingMinLine: 3 # 只对超过该行数的代码块编号（最小0）
 codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（需要字体支持，否则可能导致字符宽度不一，效果极差，不建议使用）
@@ -18,15 +17,17 @@ codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（
 # 前缀“图 ”由figureTitle决定，标题编号“1.2”的深度由chapteresDepth决定
 # “1.2”与“3”中间的点由chapDelim决定
 # 题注前缀与题注文本的分隔符“:”由titleDelim决定
-chapters: true # 是否自动编号图片表格
+# 空格需要转义为'&#32;'
+chapters: true # 是否显示章节号（还没做）
 chaptersDepth: 1 # 标题编号深度，默认只有一级标题的编号
 chapDelim: '.' # 编号chapter.item中间的“点”
-figureTitle: "图 "
-figureTitle2: "Figure "
-tableTitle: "表 "
-tableTitle2: "Table "
-titleDelim: ' ' # 题注编号和题注文本直接的分隔符
+figureTitle: "图&#32;"
+figureTitle2: "Figure&#32;"
+tableTitle: "表&#32;"
+tableTitle2: "Table&#32;"
+titleDelim: '&#32;' # 题注编号和题注文本直接的分隔符
 
+# 下方参数目前尚未实现
 # 引用编号时的参数
 figPrefix: 图
 eqnPrefix: 式
@@ -406,7 +407,9 @@ TODO 这里的代码尚未实现，可以先不看
 
 ## 普通表格
 
-普通的表格可以直接用Markdown的表格语法。根据学校的要求，我们把默认的表格样式设置为了三线表。**套用表格样式的功能有待增加**。
+普通的表格可以直接用Markdown的表格语法。根据学校的要求，我们把默认的表格样式设置为了三线表。**套用表格样式的功能因为pandoc不支持，故目前无法实现**。
+
+**表格编号引用功能有待增加**
 
 | 第一列 |  第2列   | 第$x$列 |
 | :----- | :------: | ------: |
@@ -415,6 +418,10 @@ TODO 这里的代码尚未实现，可以先不看
 | 空     |   sum    |       - |
 
 : 这里是表头\Caption2{tbl}English Table Title
+
+\newPara{}
+
+CQU要求表格之后空一行，故这里最好手动实现一个空行。
 
 显而易见，这个表格不能有高级操作，不能合并表格（其实pandoc是支持的，但是无法输出到Word，Markdown也没有对应的语法）
 
@@ -426,14 +433,7 @@ TODO 这里的代码尚未实现，可以先不看
 
 注意，引入的文档中的样式会使用reference.docx中的对应样式，因此无需在新的文档中修改样式内容，只需应用对应样式即可，这里推荐复制reference.docx中的`Compact`样式，在本文所用的reference.docx中，该样式没有首行缩进，是制作表格比较良好的选择，同时也是pandoc默认使用的表格样式。
 
-<!-- \includeDoc{Table.docx} -->
-:::{style="Compact"}
-123
-
-`{IncludeText "D:\\CodeProject\\cqu-thesis-markdown\\template\\Table.docx"}`{=field}
-
-123
-:::
+\includeDoc{Table.docx}
 
 # 代码和文本块引用
 
