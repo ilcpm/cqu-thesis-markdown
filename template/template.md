@@ -27,6 +27,7 @@ tableTitle: "表&#32;"
 tableTitle2: "Table&#32;"
 titleDelim: '&#32;' # 题注编号和题注文本直接的分隔符
 
+secondCaptionSeparator: "\\sc{}" # 题注中，双语题注的分隔符，需要使用"\sc{}"这样的LaTeX命令写法，需要转义
 isParaAfterTable: true # 是否在表格之后自动生成空段落（CQU格式要求）
 
 # 下方参数目前尚未实现
@@ -377,9 +378,9 @@ TODO 这里的代码尚未实现，可以先不看
 
 ## 双语题注
 
-有时候图片的题注需要同时有中文和英文，使用语法`![中文题注\Caption2{fig}英文题注](){}`的方式生成英文题注。其中中文题注的编号自动完成，`\Caption2`命令通过在中文题注后面插入换行符和英文题注的前缀及序号来实现英文题注的插入
+有时候图片的题注需要同时有中文和英文，使用语法`![中文题注\sc{}英文题注](){}`的方式生成英文题注。其中中文题注的编号自动完成，`\sc{}`命令通过在中文题注后面插入换行符和英文题注的前缀及序号来实现英文题注的插入，该参数可在metadata中自定义
 
-![这里是中文题注\Caption2{fig}English Caption is also needed](cqu.png){#fig:DoubleCaption height=2cm}
+![这里是中文题注\sc{}English Caption is also needed](cqu.png){#fig:DoubleCaption height=2cm}
 
 ## 图片的引用
 
@@ -395,11 +396,11 @@ TODO 这里的代码尚未实现，可以先不看
 
 图2：双语有标签 `fig:2`（同图 1，外加英文标题标签`fig:2-sc`）
 
-![我是双语的中文题注\Caption2{fig}I am Thanox](cqu.png){#fig:2 height=1.5cm}
+![我是双语的中文题注\sc{}I am Thanox](cqu.png){#fig:2 height=1.5cm}
 
 图3：无编号双语标签
 
-![中文\Caption2{fig}English](cqu.png){- height=1.5cm}
+![中文\sc{}English](cqu.png){- height=1.5cm}
 
 ---
 
@@ -417,7 +418,7 @@ TODO 这里的代码尚未实现，可以先不看
 | 数字   |   1231   |    4654 |
 | 空     |   sum    |       - |
 
-: 这里是表头\Caption2{tbl}English Table Title {#tbl:test}
+: 这里是表头\sc{}English Table Title {#tbl:test}
 
 CQU要求表格之后空一行，可在metadata中选择自动生成这个空行。
 
