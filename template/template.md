@@ -409,7 +409,15 @@ TODO 这里的代码尚未实现，可以先不看
 
 普通的表格可以直接用Markdown的表格语法。根据学校的要求，我们把默认的表格样式设置为了三线表。**套用表格样式的功能因为pandoc不支持，故目前无法实现**。
 
-**表格编号引用功能有待增加**
+| 第一列 |  第2列   | 第$x$列 |
+| :----- | :------: | ------: |
+| 左对齐 | 居中对齐 |  右对齐 |
+| 数字   |   1231   |    4654 |
+| 空     |   sum    |       - |
+
+: 这里是表头\Caption2{tbl}English Table Title {#tbl:test-table}
+
+表 [@tbl:test-table] 中文题注为 [@tbl:test-table-c]，英文题注为 [@tbl:test-table-sc]，位于第 [@tbl:test-table-page] 页。
 
 | 第一列 |  第2列   | 第$x$列 |
 | :----- | :------: | ------: |
@@ -417,11 +425,8 @@ TODO 这里的代码尚未实现，可以先不看
 | 数字   |   1231   |    4654 |
 | 空     |   sum    |       - |
 
-: 这里是表头\Caption2{tbl}English Table Title
+: 无编号的表\Caption2{tbl}Table without number {#tbl:test-table2 -}
 
-\newPara{}
-
-CQU要求表格之后空一行，故这里最好手动实现一个空行。
 
 显而易见，这个表格不能有高级操作，不能合并表格（其实pandoc是支持的，但是无法输出到Word，Markdown也没有对应的语法）
 
