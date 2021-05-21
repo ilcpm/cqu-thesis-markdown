@@ -27,6 +27,11 @@ tableTitle: "表&#32;"
 tableTitle2: "Table&#32;"
 titleDelim: '&#32;' # 题注编号和题注文本直接的分隔符
 
+# 公式编号格式为 eqPrefix chapter chapDelim item eqSuffix
+# 例如："(4.1)"
+eqPrefix: '('
+eqSuffix: ')'
+
 secondCaptionSeparator: "\\sc{}" # 题注中，双语题注的分隔符，需要使用"\sc{}"这样的LaTeX命令写法，需要转义
 isParaAfterTable: true # 是否在表格之后自动生成空段落（CQU格式要求）
 
