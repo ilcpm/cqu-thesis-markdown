@@ -27,6 +27,8 @@ tableTitle: "表&#32;"
 tableTitle2: "Table&#32;"
 titleDelim: '&#32;' # 题注编号和题注文本直接的分隔符
 
+isParaAfterTable: true # 是否在表格之后自动生成空段落（CQU格式要求）
+
 # 下方参数目前尚未实现
 # 引用编号时的参数
 figPrefix: 图
@@ -417,11 +419,13 @@ TODO 这里的代码尚未实现，可以先不看
 | 数字   |   1231   |    4654 |
 | 空     |   sum    |       - |
 
-: 这里是表头\Caption2{tbl}English Table Title
+: 这里是表头\Caption2{tbl}English Table Title {#tbl:test}
 
-\newPara{}
+CQU要求表格之后空一行，可在metadata中选择自动生成这个空行。
 
-CQU要求表格之后空一行，故这里最好手动实现一个空行。
+上面对题注进行了标记，注意需要在尾部使用空格将花括号和前面的内容分开。
+
+表格编号：[@tbl:test]，中文题注：[@tbl:test-c]，英文题注：[@tbl:test-sc]
 
 显而易见，这个表格不能有高级操作，不能合并表格（其实pandoc是支持的，但是无法输出到Word，Markdown也没有对应的语法）
 
