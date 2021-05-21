@@ -287,7 +287,7 @@ TODO
 : 若 $a$, $b$, $c$ 为三角形三边，那么 $$a^2+b^2=c^2$$ 是 $a$, $b$ 垂直的充要条件。
 : 又称毕达哥拉斯定理。
 
-[@thm:gougu:c]为 @thm:gougu，位于第 @thm:gougu-page 页。
+[@thm:gougu:c]为 @thm:gougu，位于第 @thm:gougu:page 页。
 
 ## 证明
 

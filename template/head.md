@@ -38,7 +38,7 @@ tblPrefix: 表
 secPrefix: 节
 
 proof: "证明："
-proofQed = "□"
+proofQed: "□"
 
 theoremSeparator: "："
 theorems:
