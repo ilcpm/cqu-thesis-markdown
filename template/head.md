@@ -28,6 +28,24 @@ figPrefix: 图
 eqnPrefix: 式
 tblPrefix: 表
 secPrefix: 节
+
+proof: "证明："
+proofQed = "□"
+
+theoremSeparator: "："
+theorems:
+  assumption: "假设"
+  definition: "定义"
+  proposition: "命题"
+  lemma: "引理"
+  theorem: "定理"
+  axiom: "公理"
+  corollary: "推论"
+  exercise: "练习"
+  example: "例"
+  remark: "注释"
+  problem: "问题"
+  conjecture: "猜想"
 ---
 \newcommand\pageInfo{<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="1701" w:right="1418" w:bottom="1418" w:left="1418" w:header="907" w:footer="851" w:gutter="567"/><w:footnotePr><w:numFmt w:val="decimalEnclosedCircleChinese"/><w:numRestart w:val="eachPage"/></w:footnotePr>}
 
