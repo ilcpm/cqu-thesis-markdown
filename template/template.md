@@ -4,6 +4,38 @@ singlePage: 1 # 是否单面打印，1单面，0双面，单双面的页眉不�
 codeBlockNumbering: true # 对代码块添加行号
 codeBlockNumberingMinLine: 3 # 只对超过该行数的代码块编号（最小0）
 codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（需要字体支持，否则可能导致字符宽度不一，效果极差，不建议使用）
+
+# 题注相关的参数
+# 将按照title chapter chapDelim item titleDelim的格式显示
+# 例如：“图 1.2.3:这是图片题注”，“1.2”为标题编号即chapter，“3”对应item，
+# 前缀“图 ”由figureTitle决定，标题编号“1.2”的深度由chapteresDepth决定
+# “1.2”与“3”中间的点由chapDelim决定
+# 题注前缀与题注文本的分隔符“:”由titleDelim决定
+# 空格需要转义为'&#32;'
+chapters: true # 是否显示章节号（还没做）
+chaptersDepth: 1 # 标题编号深度，默认只有一级标题的编号
+chapDelim: '.' # 编号chapter.item中间的“点”
+figureTitle: "图&#32;"
+figureTitle2: "Figure&#32;"
+tableTitle: "表&#32;"
+tableTitle2: "Table&#32;"
+titleDelim: '&#32;' # 题注编号和题注文本直接的分隔符
+
+# 公式编号格式为 eqPrefix chapter chapDelim item eqSuffix
+# 例如："(4.1)"
+eqPrefix: '('
+eqSuffix: ')'
+
+secondCaptionSeparator: "\\sc{}" # 题注中，双语题注的分隔符，需要使用"\sc{}"这样的LaTeX命令写法，需要转义
+isParaAfterTable: true # 是否在表格之后自动生成空段落（CQU格式要求）
+
+# 下方参数目前尚未实现
+# 引用编号时的参数
+figPrefix: 图
+eqnPrefix: 式
+tblPrefix: 表
+secPrefix: 节
+
 autoEqnLabels: true # 自动编号公式
 tableEqns: false # 用表格编号公式，在预览时有效
 
@@ -344,9 +376,9 @@ TODO 这里的代码尚未实现，可以先不看
 
 ## 双语题注
 
-有时候图片的题注需要同时有中文和英文，使用语法`![中文题注\Caption2{fig}英文题注](){}`的方式生成英文题注。其中中文题注的编号自动完成，`\Caption2`命令通过在中文题注后面插入换行符和英文题注的前缀及序号来实现英文题注的插入
+有时候图片的题注需要同时有中文和英文，使用语法`![中文题注\sc{}英文题注](){}`的方式生成英文题注。其中中文题注的编号自动完成，`\sc{}`命令通过在中文题注后面插入换行符和英文题注的前缀及序号来实现英文题注的插入，该参数可在metadata中自定义
 
-![这里是中文题注\Caption2{fig}English Caption is also needed](cqu.png){#fig:DoubleCaption height=2cm}
+![这里是中文题注\sc{}English Caption is also needed](cqu.png){#fig:DoubleCaption height=2cm}
 
 ## 图片的引用
 
@@ -362,11 +394,11 @@ TODO 这里的代码尚未实现，可以先不看
 
 图2：双语有标签 `fig:2`（同图 1，外加英文标题标签`fig:2-sc`）
 
-![我是双语的中文题注\Caption2{fig}I am Thanox](cqu.png){#fig:2 height=1.5cm}
+![我是双语的中文题注\sc{}I am Thanox](cqu.png){#fig:2 height=1.5cm}
 
 图3：无编号双语标签
 
-![中文\Caption2{fig}English](cqu.png){- height=1.5cm}
+![中文\sc{}English](cqu.png){- height=1.5cm}
 
 ---
 
@@ -384,18 +416,13 @@ TODO 这里的代码尚未实现，可以先不看
 | 数字   |   1231   |    4654 |
 | 空     |   sum    |       - |
 
-: 这里是表头\Caption2{tbl}English Table Title {#tbl:test-table}
+: 这里是表头\sc{}English Table Title {#tbl:test}
 
-表 [@tbl:test-table] 中文题注为 [@tbl:test-table-c]，英文题注为 [@tbl:test-table-sc]，位于第 [@tbl:test-table-page] 页。
+CQU要求表格之后空一行，可在metadata中选择自动生成这个空行。
 
-| 第一列 |  第2列   | 第$x$列 |
-| :----- | :------: | ------: |
-| 左对齐 | 居中对齐 |  右对齐 |
-| 数字   |   1231   |    4654 |
-| 空     |   sum    |       - |
+上面对题注进行了标记，注意需要在尾部使用空格将花括号和前面的内容分开。
 
-: 无编号的表\Caption2{tbl}Table without number {#tbl:test-table2 -}
-
+表格编号：[@tbl:test]，中文题注：[@tbl:test-c]，英文题注：[@tbl:test-sc]
 
 显而易见，这个表格不能有高级操作，不能合并表格（其实pandoc是支持的，但是无法输出到Word，Markdown也没有对应的语法）
 
