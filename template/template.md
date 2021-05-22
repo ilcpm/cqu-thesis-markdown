@@ -287,7 +287,7 @@ TODO
 : 若 $a$, $b$, $c$ 为三角形三边，那么 $$a^2+b^2=c^2$$ 是 $a$, $b$ 垂直的充要条件。
 : 又称毕达哥拉斯定理。
 
-[@thm:gougu:c]为 @thm:gougu，位于第 @thm:gougu:page 页。
+[@thm:gougu:c]为 @thm:gougu，位于@thm:gougu:page。
 
 ## 证明
 
@@ -609,7 +609,7 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 2. [456]{#lst:456}
 3. 789
 
-上述列表中，第[@lst:456]项位于第[@lst:456:page]页，内容为[@lst:456:c]
+上述列表中，第[@lst:456]项位于[@lst:456:page]，内容为[@lst:456:c]
 
 # 交叉引用测试
 
@@ -622,13 +622,17 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 ```
 ## 标题引用测试：有前缀{#sec:title-no}
 标题编号：[@sec:title-no]
+标题编号（无前缀）：[-@sec:title-no]
 标题内容：[@sec:title-no:c]
 ```
 
 标题编号：[@sec:title-no]
+标题编号（无前缀）：[-@sec:title-no]
 标题内容：[@sec:title-no:c]
 
-## 标题引用测试：无前缀{#title}
+## 标题引用测试：无前缀（不推荐）{#title}
+
+强烈推荐在标题的标签中使用 `sec` 前缀。没有该前缀的情况下，标签会当作普通元素的标签，参见[@sec:common-ref]。
 
 无前缀的编号段落引用需要用`:no`后缀实现
 
@@ -641,7 +645,7 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 标题编号：[@title:no]
 标题内容：[@title]
 
-## 题注编号引用测试：有前缀
+## 题注编号引用测试：有前缀{#sec:section}
 
 题注的引用适用于表格，图片，定理环境。
 
@@ -661,7 +665,9 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 中文题注：[@tbl:table-no:c]
 英文题注：[@tbl:table-no:sc]
 
-## 题注编号引用测试：无前缀
+## 题注编号引用测试：无前缀（不推荐）
+
+强烈推荐在表格的标签中 `tbl` 前缀。没有前缀的情况下，标签会当作普通元素的标签，参见[@sec:common-ref]。
 
 | 测试表格 |
 | :------: |
@@ -679,7 +685,7 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 中文题注：[@table:c]
 英文题注：[@table:sc]
 
-## 普通内容引用测试
+## 普通内容引用测试 {#sec:common-ref}
 
 普通内容的引用用来验证对于含有奇奇怪怪前后缀或者无前后缀的内容的引用。
 
@@ -692,6 +698,9 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 
 [这是一串有着奇怪前缀和后缀的纯文本]{#qwe:text:xxx}
 文本内容：[@qwe:text:xxx]
+
+页码：[@text:page]
+页码（无前缀）：[-@text:page]
 ```
 
 [这是一串测试用的纯文本]{#text}
@@ -703,6 +712,20 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 [这是一串有着奇怪前缀和后缀的纯文本]{#qwe:text:xxx}
 文本内容：[@qwe:text:xxx]
 
+页码：[@text:page]，
+页码（无前缀）：[-@text:page]，
+
+## 复杂引用
+
+``` markdown
+以上我们内容我们主要讲了 [@sec:title-no:c;@sec:section:c;@sec:common-ref:c] 三部分，它们分别在[@sec:title-no:page;@sec:section:page;@sec:common-ref:page]。
+
+还可临时设定前后缀： [第 @sec:title-no 页].
+```
+
+以上我们内容我们主要讲了 [@sec:title-no:c;@sec:section:c;@sec:common-ref:c] 三部分，它们分别在[@sec:title-no:page;@sec:section:page;@sec:common-ref:page]。
+
+还可临时设定前后缀： [第 @sec:title-no 页].
 
 # 域代码{#sec:ydm}
 
@@ -837,7 +860,7 @@ pandoc默认参考文献会生成在文档的最后方，但根据论文规范�
 
 附录B中的内容
 
-由于附录的字号比正文小，所以这里测试一下在正文中的内联代码字号是否正常👉`内联代码code code`👈可见内联代码的字号并未跟随改变，和前文（见[@内联代码字号问题:page]页）中提到的脚注中的代码一样。
+由于附录的字号比正文小，所以这里测试一下在正文中的内联代码字号是否正常👉`内联代码code code`👈可见内联代码的字号并未跟随改变，和前文（见[@内联代码字号问题:page]）中提到的脚注中的代码一样。
 
 ## [\Style{AppendixHeading2}单双面打印的页眉域代码]{#sec:页眉 -}
 

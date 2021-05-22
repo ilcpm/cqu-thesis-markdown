@@ -35,7 +35,8 @@ isParaAfterTable: true # 是否在表格之后自动生成空段落（CQU格式�
 figPrefix: 图
 eqnPrefix: 式
 tblPrefix: 表
-secPrefix: 节
+secPrefix: §
+pagePrefix: "p.&#32;"
 
 proof: "证明："
 proofQed: "□"
