@@ -46,10 +46,12 @@ secSuffix: ""
 pageSuffix: ""
 lstSuffix: "&#32;项"
 
-proof: "证明："
+proof: "证明　"
 proofQed: "□"
 
-theoremSeparator: "："
+theoremSeparator: "　"
+theoremPrefix: "("
+theoremSuffix: ")"
 theorems:
   assumption: "假设"
   definition: "定义"
