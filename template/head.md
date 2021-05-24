@@ -33,10 +33,18 @@ isParaAfterTable: true # 是否在表格之后自动生成空段落（CQU格式�
 # 下方参数目前尚未实现
 # 引用编号时的参数
 figPrefix: 图
-eqnPrefix: 式
+eqnPrefix: "("
 tblPrefix: 表
 secPrefix: §
 pagePrefix: "p.&#32;"
+lstPrefix: "第&#32;"
+
+figSuffix: ""
+eqnSuffix: ")"
+tblSuffix: ""
+secSuffix: ""
+pageSuffix: ""
+lstSuffix: "&#32;项"
 
 proof: "证明："
 proofQed: "□"
