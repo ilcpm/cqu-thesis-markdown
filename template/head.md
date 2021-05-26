@@ -30,41 +30,45 @@ eqSuffix: ')'
 secondCaptionSeparator: "\\sc{}" # 题注中，双语题注的分隔符，需要使用"\sc{}"这样的LaTeX命令写法，需要转义
 isParaAfterTable: true # 是否在表格之后自动生成空段落（CQU格式要求）
 
-# 下方参数目前尚未实现
 # 引用编号时的参数
 figPrefix: 图
 eqnPrefix: "("
 tblPrefix: 表
-secPrefix: §
-pagePrefix: "p.&#32;"
-lstPrefix: "第&#32;"
+secPrefix: "§"
+pagePrefix: "第"
+lstPrefix: "第"
 
 figSuffix: ""
 eqnSuffix: ")"
 tblSuffix: ""
 secSuffix: ""
-pageSuffix: ""
-lstSuffix: "&#32;项"
+pageSuffix: "页"
+lstSuffix: "项"
 
+# 定理环境相关
+combineDefinitionTerm: true # 用Word中Crtl Alt Enter产生的能够合并两个段落的特殊段落标记合并定理的编号和内容
 proof: "证明　"
-proofQed: "□"
+proofQed: '[□]{style="Definition Qed"}'
 
-theoremSeparator: "　"
-theoremPrefix: "("
+theoremSeparator: "　" # 定理环境的前缀与定理之间的分隔符，默认为全角空格
+# 定理环境的标题（如果有）的前后缀
+# （例如：“定理 1.2 (勾股定理)”中的“勾股定理”）
+theoremPrefix: "&#32;("
 theoremSuffix: ")"
+# 定理环境各项内容的前缀字符定义
 theorems:
-  assumption: "假设"
-  definition: "定义"
-  proposition: "命题"
-  lemma: "引理"
-  theorem: "定理"
-  axiom: "公理"
-  corollary: "推论"
-  exercise: "练习"
-  example: "例"
-  remark: "注释"
-  problem: "问题"
-  conjecture: "猜想"
+  assumption: "假设&#32;"
+  definition: "定义&#32;"
+  proposition: "命题&#32;"
+  lemma: "引理&#32;"
+  theorem: "定理&#32;"
+  axiom: "公理&#32;"
+  corollary: "推论&#32;"
+  exercise: "练习&#32;"
+  example: "例&#32;"
+  remark: "注释&#32;"
+  problem: "问题&#32;"
+  conjecture: "猜想&#32;"
 ---
 \newcommand\pageInfo{<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="1701" w:right="1418" w:bottom="1418" w:left="1418" w:header="907" w:footer="851" w:gutter="567"/><w:footnotePr><w:numFmt w:val="decimalEnclosedCircleChinese"/><w:numRestart w:val="eachPage"/></w:footnotePr>}
 

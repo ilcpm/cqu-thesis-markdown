@@ -281,6 +281,12 @@ TODO
 
 # 定理环境
 
+数学专业经常需要使用定理环境和证明环境。这两个环境使用了
+
+TODO
+
+注意空格
+
 ## 定理
 
 勾股定理[@JifaLingling-132] {.theorem #thm:gougu}
@@ -291,21 +297,31 @@ TODO
 
 ## 证明
 
+在数学中，要计算一个无法直接求得的数值，经常采用逼近的方法，即计算出一列较容易求得、同时精确程度越来越好的数作为它的近似值.例如，古人为了求圆周率$\pi$，即圆的周长与直径之比，采用单位圆(半径为1的圆)的内接正$n$边形($n$一般取成$3 • 2^m,m\in N^+$)的半周长$L_n$。去逼近它.可以想象，随着$n$的增大，正多边形的半周长就越来越接近圆的半周长，与$\pi$的近似程度也越来越好.正如我国古代数学家刘徽所说：“割之弥细，所失弥少;割之又割，以至于不可割，则与圆周合体而无所失矣.”这就是说，你想让与π的误差多小都是可以做得到的——只要将$n$取得足够大就行了.
+
 {.proposition}
 : 若 $a, b \in R$，且 $a \le b, b\le a$，那么 $a=b$.
 
 ::: {.proof}
 假设 $a \ne b$，那么 $a < b$ 或 $b>a$.
 
-若 $a<b$，则$b\le a$ 不成立。
+1. 若 $a<b$，则$b\le a$ 不成立。
 
-若 $b>a$，则$a \le b$ 不成立。
+2. 若 $b>a$，则$a \le b$ 不成立。
 
 矛盾。
 
 于是必有$a=b$.
 :::
 
+我们来看一下这个定义的几何意义(如图2.2.1).如前所述，数列可以看成定义在正整数集上的一种特殊函数
+
+极限的$\varepsilon-\delta$定义[@Philip-159] {.definition #def:limit}
+
+: 设$\left\{x_{n}\right\}$是一给定数列，$a$是一个实常数。如果对于任意给定的$\varepsilon>0$，可以找到正整数$N$，使得当$n>N$时，成立$$\left|x_{n}-a\right|<\varepsilon$$则称数列$\left\{x_{n}\right\}$收敘于$a$（或$a$是数列$\left\{x_{n}\right\}$的极限），记为$$\lim _{n \rightarrow \infty} x_{n}=a，$$有时也记为$$x_{n} \rightarrow a(n \rightarrow \infty)$$
+如果不存在实数$a$，使$\left\{x_{n}\right\}$收敘于$a$，则称数列$\left\{x_{n}\right\}$发散。
+
+定义编号：[@def:limit]，定理名称：[@def:limit:c]，定理页码：[@def:limit:page]
 
 ## 语法定义
 
@@ -316,33 +332,12 @@ TODO
 ```
 
 ```markdown
-[]{.definition}[@Perner-171]
+[@Perner-171] {.definition}
 : 这是一个没有名字但是有参考文献引用的定义
 ```
 
-通过最基本的元素可以这样实现：
-
-```markdown
-\Style{Definition}[定义[`{STYLEREF 1 \s}`{=field}.`{SEQ def \* ARABIC \s 1}`{=field}]{#def:limit}]{style="Definition Preffix"} [([极限的$\varepsilon-\delta$定义]{#def:limit:c}[@Philip-159])]{style="Definition Title"}　第一段
-
-\Style{Definition}第二段
-```
-
-定义1.3 (极限的$\varepsilon-\delta$定义)第一段
-
-第二段
-
-其中`定义`二字为Markdown的metadata的`proof`参数，数字`1.3`中的分隔符来自`chapDelim`参数
-
-## 手动实现
-
-这里通过最基本的元素手动实现了一个定义
-
-\Style{Definition}[定义[`{STYLEREF 1 \s}`{=field}.`{SEQ def \* ARABIC \s 1}`{=field}]{#def:limit}]{style="Definition Preffix"} [([极限的$\varepsilon-\delta$定义]{#def:limit:c}[@Philip-159])]{style="Definition Title"}　设$\left\{x_{n}\right\}$是一给定数列，$a$是一个实常数。如果对于任意给定的$\varepsilon>0$，可以找到正整数$N$，使得当$n>N$时，成立$$\left|x_{n}-a\right|<\varepsilon$$则称数列$\left\{x_{n}\right\}$收敘于$a$（或$a$是数列$\left\{x_{n}\right\}$的极限），记为$$\lim _{n \rightarrow \infty} x_{n}=a，$$有时也记为$$x_{n} \rightarrow a(n \rightarrow \infty)$$
-
-\Style{Definition}如果不存在实数$a$，使$\left\{x_{n}\right\}$收敘于$a$，则称数列$\left\{x_{n}\right\}$发散。
-
-定义编号：[@def:limit]，定理名称：[@def:limit:c]，定理页码：[@def:limit:page]
+[@Perner-171] {.definition}
+: 这是一个没有名字但是有参考文献引用的定义
 
 # 图片
 
