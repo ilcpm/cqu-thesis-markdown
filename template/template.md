@@ -6,7 +6,10 @@ codeBlockNumberingMinLine: 3 # 只对超过该行数的代码块编号（最小0
 codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（需要字体支持，否则可能导致字符宽度不一，效果极差，不建议使用）
 
 autoEqnLabels: true # 自动编号公式
-tableEqns: false # 用表格编号公式，在预览时有效
+# tableEqns: false # 用表格编号公式，在预览时有效
+autoTblLabels: true
+autoFigLabels: true
+autoThmLabels: true
 
 test-metadata-block: |
   *这*是一个 `metadata block`。Metadata 分为
@@ -244,7 +247,7 @@ Metadata inline: \metadata{test-metadata-inline}
 
 通过预定义的开关开启公式编号功能之后，“行间公式”默认会被编号，实现原理是用一个三列的表格嵌套公式，中间放置公式，右边放置编号，由于该表格的对称性，公式被对齐在正中间。这里可以简单的用一用LaTeX的`\newcommand`命令，由pandoc提供原生支持。
 
-$$\begin{matrix}α & β \\ 3 & 4 \\\end{matrix}$$
+$$\begin{matrix}α & β \\ 3 & 4 \\\end{matrix}$${.tag}
 $$\begin{pmatrix}α & β \\ 3 & 4 \\\end{pmatrix}$${-}
 $$a + b^2 = \frac{c}{d}$$ {#eq:1}
 $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
@@ -767,6 +770,7 @@ Ref引用：`{Ref test_ref}`{=field}、`{Ref {Ref test_ref_ref|wtf}}`{=field}、
 
 Ref引用：`{Ref test_ref}`{=field}、`{Ref {Ref test_ref_ref|wtf}|嵌套Ref域}`{=field}、`{Ref {Ref {Ref test_ref_ref_ref}|嵌套Ref域}|套娃}`{=field}
 
+<!--
 # 技术性内容
 
 ## tex 命令内的 markdown 文本解析
@@ -824,7 +828,7 @@ $$\frac{\test}{d}$$
 ``` markdown
 \parse{公式 \test: \parse{$\test$}}
 ```
-
+-->
 # 参考文献的插入
 
 参考文献的插入和LaTeX类似，通过一个`.bib`文件来实现，该文件可通过任意文献管理软件导出，为纯文本格式，通过`[@xxx]`这样的语法来进行引用。
