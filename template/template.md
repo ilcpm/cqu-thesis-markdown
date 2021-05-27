@@ -250,6 +250,7 @@ Metadata inline: \metadata{test-metadata-inline}
 $$\begin{matrix}α & β \\ 3 & 4 \\\end{matrix}$${.tag}
 $$\begin{pmatrix}α & β \\ 3 & 4 \\\end{pmatrix}$${-}
 $$a + b^2 = \frac{c}{d}$$ {#eq:1}
+$$a^2+b^2 = b^2 + a^2 $${.raw}
 $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 
 上述4个公式中，第二个公式后的`{-}`同标题一样，表示不编号；\newLine{}
