@@ -13,7 +13,7 @@ type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接
 # “1.2”与“3”中间的点由chapDelim决定
 # 题注前缀与题注文本的分隔符“:”由titleDelim决定
 # 空格需要转义为'&#32;'
-chapters: true # 是否显示章节号（还没做）
+chapters: true # 是否显示章节号
 chaptersDepth: 1 # 标题编号深度，默认只有一级标题的编号
 chapDelim: '.' # 编号chapter.item中间的“点”
 figureTitle: "图&#32;"
