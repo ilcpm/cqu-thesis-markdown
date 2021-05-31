@@ -527,10 +527,13 @@ for k in List:  # 将list打印输出，五个一换行
 
 下面是一段对《歌剧魅影》剧本唱段台词的引用块。（这里是借助文本编辑器通过正则表达式批量生成的规范化文本，仅作炫技展示之用）
 
+> \tabC{}In sleep he sang to me   
+> \tabC{}♪ 沉睡中他为我歌唱
+> 
 > \tabC{}In dreams he came   
 > \tabC{}♪ 梦境中他近我身旁
 > 
-> \tabC{}That voice to me   
+> \tabC{}That voice which calls to me   
 > \tabC{}♪ 他的声音召唤着我
 > 
 > \tabC{}And speaks my name   
@@ -869,7 +872,9 @@ $$\frac{\test}{d}$$
 
 # 参考文献{-}
 
-pandoc默认参考文献会生成在文档的最后方，但根据论文规范，参考文献之后还有“附录”，所以这里通过命令`\Reference`来实现在任意位置插入参考文献👇，根据排版要求，参考文献的内容采用五号字体。
+根据排版要求，参考文献的内容采用五号字体。
+
+pandoc默认参考文献会生成在文档的最后方，但根据论文规范，参考文献之后还有“附录”，所以这里通过命令`\Reference`来实现在任意位置插入参考文献👇
 
 \Reference{}
 
