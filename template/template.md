@@ -250,7 +250,9 @@ $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 上述4个公式中，第二个公式后的`{-}`同标题一样，表示不编号；\newLine{}
 第三个公式后的`{#eq:1}`表示对公式打上名为`eq:1`的标记，就可以进行交叉引用了，使用`[@eq:1]`见公式[@eq:1]完成对该编号的引用
 
-如果要在公式后面输入`{#a}`这样的文字，可以先用空的花括号`{}`隔开，$$x=y_0$${} {#a}像这样
+<!-- 如果要在公式后面输入`{#a}`这样的文字，可以先用空的花括号`{}`隔开，$$x=y_0$${} {#a}像这样 -->
+
+公式后面跟上`{-}`即可去掉单个公式的编号，公式后面跟上`{.raw}`即可保留单个公式的TeX代码，以便复杂公式或者Word无法正常显示的公式在Word导出后使用mathtype等软件手动或自动转换为对应格式的公式。
 
 $$
 \frac{\partial\lambda}{\partial n}=
@@ -269,14 +271,6 @@ $$
 \right)
 $$
 
-## 公式不编号
-
-TODO
-
-## 公式纯文本保留
-
-TODO
-
 # 定理环境
 
 数学专业经常需要使用定理环境和证明环境。这两个环境使用了
@@ -285,13 +279,65 @@ TODO
 
 注意空格
 
-## 定理
+## 语法定义
+
+定理环境的书签无需使用前缀。当然，也可以自己加。
+
+无名称无参考文献有标签
+
+```markdown
+{.theorem #thm:test}
+: 第一段
+: 第二段
+```
+
+{.theorem #thm:test}
+: 第一段
+: 第二段
+
+---
+
+有名字有标签无参考文献：
+
+```markdown
+定理名称 {.definition #def:limit}
+: 第一段
+: 第二段
+```
+
+定理名称 {.definition #def:limit}
+: 第一段
+: 第二段
+
+---
+
+有名字有标签有参考文献：
+
+```markdown
+这是一个引理[@XuRhee-162] {.lemma #lemma:test}
+: 第一段
+: 第二段
+```
+
+这是一个引理[@XuRhee-162] {.lemma #lemma:test}
+: 第一段
+: 第二段
+
+## 定理环境样例
 
 勾股定理[@JifaLingling-132] {.theorem #thm:gougu}
 : 若 $a$, $b$, $c$ 为三角形三边，那么 $$a^2+b^2=c^2$$ 是 $a$, $b$ 垂直的充要条件。
 : 又称毕达哥拉斯定理。
 
-[@thm:gougu:c]为[@thm:gougu]，位于[@thm:gougu:page]。
+👉[@thm:gougu:c]👈为👉[@thm:gougu]👈，位于👉[@thm:gougu:page]👈。
+
+极限的$\varepsilon-\delta$定义[@Philip-159] {.definition #def:limit}
+: 设$\left\{x_{n}\right\}$是一给定数列，$a$是一个实常数。如果对于任意给定的$\varepsilon>0$，可以找到正整数$N$，使得当$n>N$时，成立$$\left|x_{n}-a\right|<\varepsilon$$则称数列$\left\{x_{n}\right\}$**收敘于**$a$（或$a$是数列$\left\{x_{n}\right\}$的**极限**），记为$$\lim _{n \rightarrow \infty} x_{n}=a，$$有时也记为$$x_{n} \rightarrow a(n \rightarrow \infty)$$
+如果不存在实数$a$，使$\left\{x_{n}\right\}$收敘于$a$，则称数列$\left\{x_{n}\right\}$**发散**。
+
+定义编号：[@def:limit]，定理名称：[@def:limit:c]，定理页码：[@def:limit:page]
+
+\newpage{}
 
 ## 证明
 
@@ -311,31 +357,6 @@ TODO
 
 于是必有$a=b$.
 :::
-
-我们来看一下这个定义的几何意义(如图2.2.1).如前所述，数列可以看成定义在正整数集上的一种特殊函数
-
-极限的$\varepsilon-\delta$定义[@Philip-159] {.definition #def:limit}
-
-: 设$\left\{x_{n}\right\}$是一给定数列，$a$是一个实常数。如果对于任意给定的$\varepsilon>0$，可以找到正整数$N$，使得当$n>N$时，成立$$\left|x_{n}-a\right|<\varepsilon$$则称数列$\left\{x_{n}\right\}$收敘于$a$（或$a$是数列$\left\{x_{n}\right\}$的极限），记为$$\lim _{n \rightarrow \infty} x_{n}=a，$$有时也记为$$x_{n} \rightarrow a(n \rightarrow \infty)$$
-如果不存在实数$a$，使$\left\{x_{n}\right\}$收敘于$a$，则称数列$\left\{x_{n}\right\}$发散。
-
-定义编号：[@def:limit]，定理名称：[@def:limit:c]，定理页码：[@def:limit:page]
-
-## 语法定义
-
-```markdown
-[极限的$\varepsilon-\delta$定义]{.definition #def:limit}
-: 第一段
-: 第二段
-```
-
-```markdown
-[@Perner-171] {.definition}
-: 这是一个没有名字但是有参考文献引用的定义
-```
-
-[@Perner-171] {.definition}
-: 这是一个没有名字但是有参考文献引用的定义
 
 # 图片
 
@@ -373,7 +394,7 @@ TODO
 
 ---
 
-图1：单语有标签 `fig:1`（编号标签`fi:1`，中文标题标签`fig:1:c`）
+图1：单语有标签 `fig:1`（编号标签`fig:1`，中文标题标签`fig:1:c`）
 
 ![我是单语中文题注](cqu.png){#fig:1 height=1.5cm}
 
@@ -403,11 +424,21 @@ TODO
 
 : 这里是表头\sc{}English Table Title {#tbl:test}
 
+表格编号：[@tbl:test]
+
+表格编号去掉前缀：[-@tbl:test]
+
+中文题注：[@tbl:test:c]
+
+英文题注：[@tbl:test:sc]
+
+页码：[@tbl:test:page]
+
+页码无前后缀：[-@tbl:test:page]
+
 CQU要求表格之后空一行，可在metadata中选择自动生成这个空行。
 
 上面对题注进行了标记，注意需要在尾部使用空格将花括号和前面的内容分开。
-
-表格编号：[@tbl:test]，中文题注：[@tbl:test:c]，英文题注：[@tbl:test:sc]
 
 显而易见，这个表格不能有高级操作，不能合并表格（其实pandoc是支持的，但是无法输出到Word，Markdown也没有对应的语法）
 
@@ -748,7 +779,7 @@ Word对rId有自己的理解，也就是说经过Word保存之后的文档，rId
 
 效果：`{REF sec:jcyy|域代码还未更新}`{=field}
 
-[^field_code]: Word 中的域代码列表：[https://support.microsoft.com/zh-cn/office/word-%E4%B8%AD%E7%9A%84%E5%9F%9F%E4%BB%A3%E7%A0%81%E5%88%97%E8%A1%A8-1ad6d91a-55a7-4a8d-b535-cf7888659a51](https://support.microsoft.com/zh-cn/office/word-%E4%B8%AD%E7%9A%84%E5%9F%9F%E4%BB%A3%E7%A0%81%E5%88%97%E8%A1%A8-1ad6d91a-55a7-4a8d-b535-cf7888659a51)
+[^field_code]: Word 中的域代码列表：\newLine{}[https://support.microsoft.com/zh-cn/office/word-%E4%B8%AD%E7%9A%84%E5%9F%9F%E4%BB%A3%E7%A0%81%E5%88%97%E8%A1%A8-1ad6d91a-55a7-4a8d-b535-cf7888659a51](https://support.microsoft.com/zh-cn/office/word-%E4%B8%AD%E7%9A%84%E5%9F%9F%E4%BB%A3%E7%A0%81%E5%88%97%E8%A1%A8-1ad6d91a-55a7-4a8d-b535-cf7888659a51)
 
 ## 书签的域代码引用
 
@@ -901,8 +932,6 @@ else:
 * 目录的域代码为`{STYLEREF  "TOC 标题"  \* MERGEFORMAT}`
 
 故连起来之后，最终域代码为
-
-1231231
 
 * 摘要和正文奇数页面
 
