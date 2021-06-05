@@ -11,6 +11,9 @@ autoTblLabels: true
 autoFigLabels: true
 autoThmLabels: true
 
+keywords: ["排版", "论文", "格式转换"]
+keywords-en: ["pandoc", "markdown", "word"]
+
 test-metadata-block: |
   *这*是一个 `metadata block`。Metadata 分为
   
@@ -36,7 +39,7 @@ test-metadata-inline: '*这*是一个 `metadata inline`'
 
 \newPara{}
 
-\KeyWord{关键词：}排版，论文，格式转换
+\cKeyWords{}
 
 # **Abstract**{-}
 
@@ -62,7 +65,7 @@ I have a dream today!
 
 \newPara{}
 
-\KeyWord{Keywords: }pandoc, Markdown, Word
+\eKeyWords{}
 
 \newSectionAbstract
 
@@ -104,12 +107,14 @@ I have a dream today!
 
 需要注意的是，[**脚注中的内联代码无法随脚注一起使用更小的字号**]{#内联代码字号问题}[^footnote-fontsize]
 
-[^3]:脚注：诶，上面的兄弟伙，你说你一根横线在我们脚注脑壳上面，应该跟我们一路对齐的撒，啷个子跟别个那些正文伙到一起去把脑壳歪起生起哟，大家一起对正标齐，看到起多舒服
-[^1]:横线：嗐，老弟呀，不是我不想和你们对齐呀，我跟你讲嘛，是楞个的。虽然说我不是脚注，但是我和你们脚注一起走南闯北穿一条裤子的，按理说也该按脚注的待遇来撒，结果那些背时灾舅子上户口的，硬是把我给上成是正文的户口。结果嘞哈斗没得法的了，我现在是正文，只有跟他们正文一路把脑壳歪起了
-[^2]:脚注：瓜兮兮，开飞机；神戳戳，骑摩托。嘞些个宝批龙怕是没读过书哦
-[^5]:……
-[^99]:横线：是撒是撒，唉不摆了不摆了
-[^footnote-fontsize]:`some code in footnote`脚注中的内联代码无法随脚注的字号一起改变
+
+[^3]:脚注（`[^3]`）
+[^1]:脚注（`[^1]`）
+[^2]:脚注（`[^2]`）
+[^5]:脚注（`[^3]`）
+[^99]:脚注（`[^99]`）（脚注顺序只和引用脚注的顺序有关）
+[^footnote-fontsize]:已知问题：`some code in footnote`脚注中的内联代码无法随脚注的字号一起改变
+
 
 ## 这是一个没有编号的二级标题{-}
 
