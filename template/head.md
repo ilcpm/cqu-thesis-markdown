@@ -1,10 +1,17 @@
 ---
-bibliography: [1.bib]  # 参考文献信息文件（通过这个文件提供参考文献的引入支持）
-csl: china-national-standard-gb-t-7714-2015-numeric.csl  # 参考文献的样式文件（通过这个文件确定参考文献的显示样式）
-# 下面这个参数固定，表示把.bib文件中未使用的参考文献也一并插入文档
-nocite: /
-    @*
 type: "重庆大学本科毕业论文" # 页眉左上角的文字，可以直接改为研究生或者XXX作业（方便不写毕业论文的时候其他作业使用）可以改为空，但不能去掉！
+
+singlePage: 1 # 是否单面打印，1单面，0双面，单双面的页眉不一样，通过这个参数确定
+
+codeBlockNumbering: true # 对代码块添加行号
+codeBlockNumberingMinLine: 3 # 只对超过该行数的代码块编号（最小0）
+codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（需要字体支持，否则可能导致字符宽度不一，效果极差，不建议使用）
+
+autoEqnLabels: true # 自动编号公式
+# tableEqns: false # 用表格编号公式，在预览时有效
+autoTblLabels: true
+autoFigLabels: true
+autoThmLabels: true
 
 # 题注相关的参数
 # 将按照title chapter chapDelim item titleDelim的格式显示
@@ -69,6 +76,9 @@ theorems:
   remark: "注释&#32;"
   problem: "问题&#32;"
   conjecture: "猜想&#32;"
+
+workPath: 'D:\\CodeProject\\cqu-thesis-markdown\\template\\'
+
 ---
 \newcommand\pageInfo{<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="1701" w:right="1418" w:bottom="1418" w:left="1418" w:header="907" w:footer="851" w:gutter="567"/><w:footnotePr><w:numFmt w:val="decimalEnclosedCircleChinese"/><w:numRestart w:val="eachPage"/></w:footnotePr>}
 

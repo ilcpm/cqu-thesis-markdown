@@ -1,15 +1,9 @@
 ---
-singlePage: 1 # 是否单面打印，1单面，0双面，单双面的页眉不一样，通过这个参数确定
-
-codeBlockNumbering: true # 对代码块添加行号
-codeBlockNumberingMinLine: 3 # 只对超过该行数的代码块编号（最小0）
-codeSpaceVisible: false # 在代码中使用字符U+2423（␣）显示空格（需要字体支持，否则可能导致字符宽度不一，效果极差，不建议使用）
-
-autoEqnLabels: true # 自动编号公式
-# tableEqns: false # 用表格编号公式，在预览时有效
-autoTblLabels: true
-autoFigLabels: true
-autoThmLabels: true
+bibliography: [1.bib]  # 参考文献信息文件（通过这个文件提供参考文献的引入支持）
+csl: china-national-standard-gb-t-7714-2015-numeric.csl  # 参考文献的样式文件（通过这个文件确定参考文献的显示样式）
+# 下面这个参数固定，表示把.bib文件中未使用的参考文献也一并插入文档
+nocite: /
+    @*
 
 keywords: ["排版", "论文", "格式转换"]
 keywords-en: ["pandoc", "markdown", "word"]
