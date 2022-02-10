@@ -1,5 +1,7 @@
 # 重庆大学毕业论文 Markdown 转 Word (docx) 方案
 
+目录：
+
   - [运行](#运行)
   - [样式](#样式)
   - [命令定义](#命令定义)
@@ -15,6 +17,18 @@
   - [已知问题](#已知问题)
     - [可以通过后处理脚本实现](#可以通过后处理脚本实现)
 
+这是一套使用 Markdown 书写重庆大学毕业论文，最终转换为符合重庆大学排版要求的 Word (docx) 文件的方案。
+
+主要的工作是：
+
+- 使输出的 docx 文件符合重庆大学的排版要求
+- 对 Markdown 语法进行若干必要的扩充以满足撰写毕业论文的需求
+- 结合开发者自己的经验对 Markdown 加入了若干语法糖
+
+详见 [template/template.md](./template/template.md) 中的示例。
+
+（[pandoc\_cqu\_thesis](https://github.com/Hagb/pandoc_cqu_thesis) 为该项目的程序部分）
+
 ## 使用
 
 1. 安装 [python](https://python.org) 和 [pandoc](https://pandoc.org)
@@ -29,7 +43,14 @@
    - Windows: 运行 `make.ps1`
    - \*nix: 执行 `make` 命令
 
-   之后即可用 Word 打开该目录下的 `template.docx`，其中列举了的该方案的各种用法
+   之后即可用 Word 打开该目录下的 `template.docx`，其中列举了的该方案的各种用法。
+
+   然后使用 `Ctrl+A` -> `F9` -> `更新整个目录` 刷新某些交叉引用。
+
+4. 为了符合重庆大学对目录的格式要求，还需选中目录（不包括图目录）并应用宏 [`AdjustTOC.cls`](./AdjustTOC.cls).
+
+
+Tips: 需要将论文分成多个文件的，可以在 `make.ps1` 和/或 `Makefile` 中 `template.md` 处依次加入论文不同部分的文件。
 
 ## 样式
 
