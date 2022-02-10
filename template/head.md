@@ -77,7 +77,8 @@ theorems:
   problem: "问题&#32;"
   conjecture: "猜想&#32;"
 
-workPath: 'D:\\CodeProject\\cqu-thesis-markdown\\template\\'
+# 指定 docx 文件所在的绝对路径（在 Unix-like 系统或 WSL 上使用时，用于指定对应 Windows 路径）
+workPath: ""
 
 ---
 \newcommand\pageInfo{<w:pgSz w:w="11907" w:h="16840" w:code="9"/><w:pgMar w:top="1701" w:right="1418" w:bottom="1418" w:left="1418" w:header="907" w:footer="851" w:gutter="567"/><w:footnotePr><w:numFmt w:val="decimalEnclosedCircleChinese"/><w:numRestart w:val="eachPage"/></w:footnotePr>}
