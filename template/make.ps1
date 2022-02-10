@@ -15,6 +15,7 @@ pandoc.exe `
     $in `
     -o $out `
     --filter pandoc_cqu_thesis `
+    --resource-path "./figures/;." `
     --citeproc `
     --metadata link-citations=true `
     --reference-doc .\reference.docx

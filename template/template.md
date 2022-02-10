@@ -1,5 +1,5 @@
 ---
-bibliography: [1.bib]  # 参考文献信息文件（通过这个文件提供参考文献的引入支持）
+bibliography: [refs.bib]  # 参考文献信息文件（通过这个文件提供参考文献的引入支持）
 csl: china-national-standard-gb-t-7714-2015-numeric.csl  # 参考文献的样式文件（通过这个文件确定参考文献的显示样式）
 # 下面这个参数固定，表示把.bib文件中未使用的参考文献也一并插入文档
 nocite: /
