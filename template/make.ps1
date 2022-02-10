@@ -14,7 +14,7 @@ pandoc.exe `
     $coverFile `
     $in `
     -o $out `
-    --filter pandoc_word_helper `
+    --filter pandoc_cqu_thesis `
     --citeproc `
     --metadata link-citations=true `
     --reference-doc .\reference.docx

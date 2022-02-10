@@ -1,6 +1,5 @@
-# 模版说明
+# 重庆大学毕业论文 Markdown 转 Word (docx) 方案
 
-- [模版说明](#模版说明)
   - [运行](#运行)
   - [样式](#样式)
   - [命令定义](#命令定义)
@@ -16,11 +15,21 @@
   - [已知问题](#已知问题)
     - [可以通过后处理脚本实现](#可以通过后处理脚本实现)
 
-## 运行
+## 使用
 
-```text
-pandoc example.md  --filter equations_no.py --filter header_convert.py --filter figures_no.py --filter refs.py --filter texcommands.py -o example.docx --reference-doc template/reference.docx
-```
+1. 安装 [python](https://python.org) 和 [pandoc](https://pandoc.org)
+2. 安装所需的 [pandoc\_cqu\_thesis](https://github.com/Hagb/pandoc_cqu_thesis):
+
+   ```
+   pip install pandoc_cqu_thesis
+   ```
+
+3. 切换到本仓库 `template` 目录并进行编译：
+
+   - Windows: 运行 `make.ps1`
+   - \*nix: 执行 `make` 命令
+
+   之后即可用 Word 打开该目录下的 `template.docx`，其中列举了的该方案的各种用法
 
 ## 样式
 
