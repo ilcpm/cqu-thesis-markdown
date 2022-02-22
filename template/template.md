@@ -1,13 +1,16 @@
 ---
-bibliography: [refs.bib]  # 参考文献信息文件（通过这个文件提供参考文献的引入支持）
-csl: china-national-standard-gb-t-7714-2015-numeric.csl  # 参考文献的样式文件（通过这个文件确定参考文献的显示样式）
+bibliography: [refs.bib]
+# 参考文献信息文件（通过这个文件提供参考文献的引入支持），这是一个列表，可以通过`[a.bib, b.bib]`的格式使用多个bib参考文件
+csl: china-national-standard-gb-t-7714-2015-numeric.csl  # 参考文献的样式文件（通过这个文件确定参考文献的显示样式），理科采用的是“编号”格式的参考文献格式
 # 下面这个参数固定，表示把.bib文件中未使用的参考文献也一并插入文档
 nocite: /
     @*
 
+# 中英文关键词
 keywords: ["排版", "论文", "格式转换"]
 keywords-en: ["pandoc", "markdown", "word"]
 
+# 这里是用做演示的metadata，可在正文中插入
 test-metadata-block: |
   *这*是一个 `metadata block`。Metadata 分为
   
@@ -65,7 +68,7 @@ I have a dream today!
 
 \toc
 
-（论文中这段请删除）↑上面通过`\toc`生成目录，为了符合格式请对该目录应用宏 [`AdjustTOC.cls`](../AdjustTOC.cls)。
+（论文中这段请删除）↑上面通过`\toc`生成目录，为了符合格式请对该目录应用宏 [`AdjustTOC.cls`](../AdjustTOC.bas)。
 
 \Style{TOC}图目录
 
@@ -105,7 +108,7 @@ I have a dream today!
 [^3]:脚注（`[^3]`）
 [^1]:脚注（`[^1]`）
 [^2]:脚注（`[^2]`）
-[^5]:脚注（`[^3]`）
+[^5]:脚注（`[^5]`）
 [^99]:脚注（`[^99]`）（脚注顺序只和引用脚注的顺序有关）
 [^footnote-fontsize]:已知问题：`some code in footnote`脚注中的内联代码无法随脚注的字号一起改变
 

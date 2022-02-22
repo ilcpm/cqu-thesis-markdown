@@ -14,12 +14,12 @@ autoFigLabels: true
 autoThmLabels: true
 
 # 题注相关的参数
-# 将按照title chapter chapDelim item titleDelim的格式显示
+# 将按照xxTitle chapter chapDelim item titleDelim的格式显示
 # 例如：“图 1.2.3:这是图片题注”，“1.2”为标题编号即chapter，“3”对应item，
 # 前缀“图 ”由figureTitle决定，标题编号“1.2”的深度由chapteresDepth决定
 # “1.2”与“3”中间的点由chapDelim决定
 # 题注前缀与题注文本的分隔符“:”由titleDelim决定
-# 空格需要转义为'&#32;'
+# 空格需要转义写成'&#32;'
 chapters: true # 是否显示章节号
 chaptersDepth: 1 # 标题编号深度，默认只有一级标题的编号
 chapDelim: '.' # 编号chapter.item中间的“点”
@@ -27,7 +27,7 @@ figureTitle: "图&#32;"
 figureTitle2: "Figure&#32;"
 tableTitle: "表&#32;"
 tableTitle2: "Table&#32;"
-titleDelim: '&#32;' # 题注编号和题注文本直接的分隔符
+titleDelim: '&#32;' # 题注编号和题注文本之间的分隔符
 
 # 公式编号格式为 eqPrefix chapter chapDelim item eqSuffix
 # 例如："(4.1)"
@@ -55,7 +55,7 @@ lstSuffix: "项"
 # 定理环境相关
 combineDefinitionTerm: true # 用Word中Crtl Alt Enter产生的能够合并两个段落的特殊段落标记合并定理的编号和内容
 proof: "证明　"
-proofQed: '[□]{style="Definition Qed"}'
+proofQed: '[□]{style="Definition Qed"}' # 这里对“方框”套用了文本样式“Definition Qed”
 
 theoremSeparator: "　" # 定理环境的前缀与定理之间的分隔符，默认为全角空格
 # 定理环境的标题（如果有）的前后缀
