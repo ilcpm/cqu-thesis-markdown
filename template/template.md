@@ -288,12 +288,12 @@ TODO
 无名称无参考文献有标签
 
 ```markdown
-{.theorem #thm:test}
+{.thm #thm:test}
 : 第一段
 : 第二段
 ```
 
-{.theorem #thm:test}
+{.thm #thm:test}
 : 第一段
 : 第二段
 
@@ -302,12 +302,12 @@ TODO
 有名字有标签无参考文献：
 
 ```markdown
-定理名称 {.definition #def:limit}
+定理名称 {.defn #def:limit}
 : 第一段
 : 第二段
 ```
 
-定理名称 {.definition #def:limit}
+定理名称 {.defn #def:limit}
 : 第一段
 : 第二段
 
@@ -316,12 +316,12 @@ TODO
 有名字有标签有参考文献：
 
 ```markdown
-这是一个引理[@XuRhee-162] {.lemma #lemma:test}
+这是一个引理[@XuRhee-162] {.lem #lem:test}
 : 第一段
 : 第二段
 ```
 
-这是一个引理[@XuRhee-162] {.lemma #lemma:test}
+这是一个引理[@XuRhee-162] {.lem #lem:test}
 : 第一段
 : 第二段
 
