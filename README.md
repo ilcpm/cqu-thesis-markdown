@@ -47,7 +47,6 @@
    - 使用VS Code做为写作软件，以下是一些推荐的VS Code扩展，用来提高写作舒适度
    - 使用`Markdown Preview Enhanced`来预览markdown文件
    - 使用`Markdown Image`来粘贴图片到Markdown文件中
-   - 使用`Markdown Image`来粘贴图片到Markdown文件中
    - 使用`markdown shortcuts`，`markdown all in one`扩展来提供快捷键和其他的各种语法高亮等支持
    - 使用`Pancod Citer`扩展来辅助参考文献的插入（可在插入参考文献时再来看所有和参考文献相关的内容）
    - 所有建议的扩展都已写在`template`和`MWE`文件夹下的`.vscode/extensions.json`配置文件内
