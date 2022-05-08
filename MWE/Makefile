@@ -1,9 +1,9 @@
 all: doc
 
-doc: template.docx
+doc: paper.docx
 
-template.docx: head.md cover_bachelor.md template.md
+paper.docx: head.md cover_bachelor.md paper.md
 	pandoc -F pandoc_cqu_thesis --resource-path ./figures/:. --citeproc --reference-doc reference.docx --metadata link-citations=true $^ -o $@
 
 clean:
-	-rm template.docx
+	-rm paper.docx

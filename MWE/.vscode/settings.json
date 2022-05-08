@@ -1,0 +1,8 @@
+{
+    "markdown-preview-enhanced.usePandocParser": true,
+    "markdown-preview-enhanced.mathRenderingOption": "MathJax",
+    "[markdown]": {
+        "editor.quickSuggestions": true,
+        "files.trimTrailingWhitespace": false, // 保存时，删除每一行末尾的空格
+    },
+}

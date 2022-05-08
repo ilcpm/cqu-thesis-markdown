@@ -249,6 +249,10 @@ $$a + b^2 = \frac{c}{d}$$ {#eq:1}
 $$a^2+b^2 = b^2 + a^2 $${.raw}
 $$\begin{bmatrix}α & β \\ 3 & 4 \\\end{bmatrix}$$
 
+$$ m_{*}\left(E_{1}\right)+m_{*}\left(E_{2}\right) \leqslant \sum_{j \in J_{1}}\left|Q_{j}\right|+\sum_{j \in J_{2}}\left|Q_{j}\right| \leqslant \sum_{j=1}^{\infty}\left|Q_{j}\right| \leqslant m_{*}(E)+\epsilon $$
+
+$$ \begin{aligned} &\left(d \phi_{q} \circ d \varphi_{p}\right)\left(v_{p}\right) \\=& d \phi_{q}\left(d \varphi_{p}\left(v_{p}\right)\right) \\=& d \phi_{q}\left(\left.\sum_{i=1}^{n} \sum_{j=1}^{m}\left(\frac{\partial\left(g^{-1} \circ \varphi \circ f\right)_{j}}{\partial x_{i}}\right)\right|_{f^{-1}(p)} \cdot v_{i}\left(\frac{\partial}{\partial y_{j}}\right)_{0}\right) \\=&\left.\sum_{i=1}^{n} \sum_{j=1}^{m}\left(\frac{\partial\left(g^{-1} \circ \varphi \circ f\right)_{j}}{\partial x_{i}}\right)\right|_{f^{-1}(p)} \cdot d \phi_{q}\left(v_{i}\left(\frac{\partial}{\partial y_{j}}\right)_{0}\right) \\=&\left.\sum_{i=1}^{n} \sum_{j=1}^{m}\left(\frac{\partial\left(g^{-1} \circ \varphi \circ f\right)_{j}}{\partial x_{i}}\right)\right|_{f^{-1}(p)} \cdot\left(\left.\sum_{k=1}^{l}\left(\frac{\partial\left(h^{-1} \circ \varphi \circ g\right)_{k}}{\partial y_{j}}\right)\right|_{g^{-1}(q)} \cdot v_{i}\left(\frac{\partial}{\partial z_{k}}\right)_{0}\right) \\=&\left.\left.\sum_{i=1}^{n} \sum_{j=1}^{m} \sum_{k=1}^{l}\left(\frac{\partial\left(h^{-1} \circ \varphi \circ g\right)_{k}}{\partial y_{j}}\right)\right|_{g^{-1}(q)}\left(\frac{\partial\left(g^{-1} \circ \varphi \circ f\right)_{j}}{\partial x_{i}}\right)\right|_{f^{-1}(p)} \cdot v_{i}\left(\frac{\partial}{\partial z_{k}}\right)_{0} \end{aligned} $$
+
 上述4个公式中，第二个公式后的`{-}`同标题一样，表示不编号；\newLine{}
 第三个公式后的`{#eq:1}`表示对公式打上名为`eq:1`的标记，就可以进行交叉引用了，使用`[@eq:1]`见公式[@eq:1]完成对该编号的引用
 
@@ -370,7 +374,7 @@ TODO
 
 ## 图片的标记&尺寸定义
 
-同样也可以采用和公式一样的语法来引用图片的编号，图片甚至可以设置宽度和高度，完整语法为：`![题注](图片路径){#fig1 weight=3cm height=2cm}`，例如：
+同样也可以采用和公式一样的语法来引用图片的编号，图片甚至可以设置宽度和高度，完整语法为：`![题注](图片路径){#fig1 width=3cm height=2cm}`，例如：
 
 ![这是一张设置了尺寸的图片](cqu.png){#fig:0 width=3cm height=2cm}
 
