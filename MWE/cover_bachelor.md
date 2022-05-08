@@ -46,7 +46,7 @@ title-en: 'A Method of Converting Markdown to Word Using Pandoc'
 :::
 
 :::{style="Date"}
-\ccoverdate{}
+\cdate{}
 :::
 
 \newSection{}
@@ -82,7 +82,7 @@ title-en: 'A Method of Converting Markdown to Word Using Pandoc'
 :::
 
 :::{style="Date"}
-**\ecoverdate{}**
+**\edate{}**
 :::
 
 \newSection{}
