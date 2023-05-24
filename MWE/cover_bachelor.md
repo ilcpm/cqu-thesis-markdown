@@ -10,13 +10,13 @@ major: '信息与计算科学'
 major-en: 'Computer Science'
 college: '重庆大学数学与统计学院'
 college-en: 'Mathematics and Statistics Department\newLine{}Chongqing University'
-date: 2021-06-01
+date: 2023-06-01
 
 title: '基于pandoc的Markdown到Word论文转换方案'
 title-en: 'A Method of Converting Markdown to Word Using Pandoc'
 ---
 :::{style="Title"}
-重庆大学本科学生毕业论文
+重庆大学本科学生毕业论文（设计）
 :::
 
 \newPara{2}
@@ -52,7 +52,7 @@ title-en: 'A Method of Converting Markdown to Word Using Pandoc'
 \newSection{}
 
 :::{style="Title"}
-**Graduation Thesis of Chongqing University**
+**Graduation Thesis (Design) of Chongqing University**
 :::
 
 \newPara{2}
