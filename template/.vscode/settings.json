@@ -2,7 +2,11 @@
     "markdown-preview-enhanced.usePandocParser": true,
     "markdown-preview-enhanced.mathRenderingOption": "MathJax",
     "[markdown]": {
-        "editor.quickSuggestions": true,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        },
         "files.trimTrailingWhitespace": false, // 保存时，删除每一行末尾的空格
     },
 }

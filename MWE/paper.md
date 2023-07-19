@@ -11,7 +11,7 @@ keywords: ["排版", "论文", "格式转换"]
 keywords-en: ["pandoc", "markdown", "word"]
 ---
 
-# 摘\Space{4}要{-}
+# 摘\Space{2}要{-}
 
 在此处撰写中文摘要
 
@@ -19,7 +19,7 @@ keywords-en: ["pandoc", "markdown", "word"]
 
 \cKeyWords{}
 
-# **Abstract**{-}
+# **ABSTRACT**{-}
 
 在此处撰写英文摘要
 
@@ -58,3 +58,5 @@ This is a MWE. MWE stands for Minimum Working Example.
 ## 附录A
 
 附录正文
+
+# 致\Space{2}谢{-}
